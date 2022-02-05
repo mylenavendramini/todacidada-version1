@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h4>Categories: </h4>
+    <br />
+    {{#each categories}}
+      <a href="/categories/{{slug}}"><h5>{{name}}</h5></a>
+    {{else}}
+    {{/each}}
+
+  </div>
+</div>
