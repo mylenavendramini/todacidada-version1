@@ -10,21 +10,21 @@
   >Inscreva-se agora!</a>
 </div>
 <hr />
-<h2>Recent posts: </h2>
+<h2>Principais postagens </h2>
 {{#each posts}}
   <div class="card mt-4">
     <div class="card-body">
       <h3>{{title}}</h3>
       <p>{{description}}</p>
       <a href="/post/{{slug}}">
-        <button class="btn btn-success">Read more</button></a>
+        <button class="btn btn-success">Ler mais</button></a>
 
       <hr />
-      <small>Category: {{category.name}}</small>
+      <small>Categoria: {{category.name}}</small>
       <br />
-      <small>Publication date: {{date}}</small>
+      <small>Data de publicação: {{date}}</small>
     </div>
   </div>
 {{else}}
-  <h5>No post</h5>
+  <h5>Não há postagens publicadas.</h5>
 {{/each}}

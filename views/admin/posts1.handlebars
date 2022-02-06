@@ -1,23 +1,23 @@
 <h2>Post list: </h2>
 <hr />
-<a href="/admin/posts1/add"><button class="btn btn-success">New post</button></a>
+<a href="/admin/posts1/add"><button class="btn btn-success">Nova postagem</button></a>
 
 {{#each posts}}
   <div class="card mt-4">
     <div class="card-body">
       <h4>{{title}}</h4>
-      <p>Description: {{description}}</p>
-      <small>Date: {{date}}</small><br />
-      <small>Category: {{category.name}}</small>
+      <p>Descricão: {{description}}</p>
+      <small>Data: {{date}}</small><br />
+      <small>Categoria: {{category.name}}</small>
       <br />
       <a href="/admin/posts1/edit/{{_id}}"><button
           class="btn btn-success mt-3"
-        >Edit post</button></a>
+        >Editar postagem</button></a>
       <a href="/admin/posts1/delete/{{_id}}"><button
           class="btn btn-danger mt-3"
-        >Delete post</button></a>
+        >Deletar postagem</button></a>
     </div>
   </div>
 {{else}}
-  <p>No post registered</p>
+  <p>Não há postagens publicadas.</p>
 {{/each}}

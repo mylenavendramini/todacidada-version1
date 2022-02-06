@@ -7,6 +7,8 @@ const Category = mongoose.model("categories");
 require("../models/Post");
 const Post = mongoose.model("posts");
 const { isAdmin } = require("../helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
+require("../models/Course");
+const Course = mongoose.model("courses");
 
 // Define routes
 router.get("/", isAdmin, (req, res) => {
@@ -205,6 +207,7 @@ router.get("/posts1/add", isAdmin, (req, res) => {
 router.post("/posts1/new", isAdmin, (req, res) => {
   // form validation:
   const errors = [];
+
   if (req.body.category == 0) {
     errors.push({ text: "Invalid category, you must register a category" });
   }
@@ -215,12 +218,22 @@ router.post("/posts1/new", isAdmin, (req, res) => {
   ) {
     errors.push({ text: "Invalid title" });
   }
+  if (req.body.title.length < 2) {
+    errors.push({ text: "Title name is too short" });
+  }
   if (
     !req.body.description ||
     typeof req.body.description == undefined ||
     req.body.description == null
   ) {
     errors.push({ text: "Invalid description" });
+  }
+  if (
+    !req.body.date ||
+    typeof req.body.date == undefined ||
+    req.body.date == null
+  ) {
+    errors.push({ text: "Digite a data no formato Dia/Mês/Ano" });
   }
   if (
     !req.body.content ||
@@ -237,9 +250,7 @@ router.post("/posts1/new", isAdmin, (req, res) => {
   ) {
     errors.push({ text: "Invalid slug" });
   }
-  if (req.body.title.length < 2) {
-    errors.push({ text: "Title name is too short" });
-  }
+
   if (errors.length > 0) {
     // send error message here
     res.render("admin/addpost1", { errors: errors });

@@ -14,6 +14,8 @@ require("./models/Post");
 const Post = mongoose.model("posts");
 require("./models/Category");
 const Category = mongoose.model("categories");
+require("./models/Course");
+const Course = mongoose.model("courses");
 const users = require("./routes/user");
 const passport = require("passport");
 require("./config/auth")(passport);
@@ -156,6 +158,67 @@ app.get("/categories/:slug", (req, res) => {
     });
 });
 
+app.get("/courses", (req, res) => {
+  Course.find()
+    .lean()
+    .then((courses) => {
+      res.render("categories/index", { courses: courses });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "There was an error listing the categories");
+      res.redirect("/");
+    });
+});
+
+app.get("/courses/:slug", (req, res) => {
+  Course.findOne({ slug: req.params.slug })
+    .lean()
+    .then((course) => {
+      if (course) {
+        // search in the Post the post that belong to this category that was passed in the :slug
+        Post.find({ category: category._id })
+          .lean()
+          .then((posts) => {
+            res.render("categories/posts1", {
+              posts: posts,
+              categoriy: category,
+            });
+          })
+          .catch((err) => {
+            req.flash("error_msg", "There was an error listing the posts");
+            res.redirect("/");
+          });
+      } else {
+        req.flash("error_msg", "This category doens't exist");
+        res.redirect("/");
+      }
+    })
+    .catch((err) => {
+      req.flash("error_msg", "There was an error loading the categories");
+      res.redirect("/");
+    });
+});
+
+app.get("/about", (req, res) => {
+  Post.find()
+    .lean()
+    .populate("category")
+    .sort({ data: "desc" })
+    .then((posts) => {
+      // req.flash("success_msg", "dasdjio");
+      res.render("admin/about", { posts: posts });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "There was an error");
+      console.log(err);
+      res.redirect("/404");
+    });
+});
+
+app.get("/mainposts", (req, res) => {
+  res.render("post/mainposts");
+});
+
 app.get("/404", (req, res) => {
   res.send("Error 404");
 });
@@ -163,12 +226,16 @@ app.get("/404", (req, res) => {
 app.get("/posts", (req, res) => {
   res.send("Post list");
 });
+
+app.get("/courses", (req, res) => {
+  res.send("Courses list");
+});
 // call routes there are in an specifict file:
 app.use("/admin", admin);
 app.use("/users", users);
 
 // Others
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8089;
 app.listen(PORT, () => {
   console.log("Server working" + PORT);
 });

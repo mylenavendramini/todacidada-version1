@@ -26,7 +26,8 @@ const Post = new Schema({
     required: true,
   },
   date: {
-    type: Date,
+    type: String,
+    require: true,
     default: Date.now(),
   },
 });

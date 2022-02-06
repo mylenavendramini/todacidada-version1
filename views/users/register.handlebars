@@ -5,21 +5,33 @@
 {{else}}
 
 {{/each}}
-<h3>Create your account today: </h3>
+<h3>Inscreva-se agora! </h3>
 <div class="card">
   <div class="card-body">
     <form action="" method="POST">
-      <label for="name">Name: </label>
+      <label for="name">Nome: </label>
       <input type="text" name="name" class="form-control" required />
       <label for="email">Email: </label>
       <input type="email" name="email" class="form-control" required />
-      <label for="password">Password: </label>
-      <input type="password" name="password" class="form-control" required />
-      <label for="password2">Repeat your password: </label>
-      <input type="password" name="password2" class="form-control" required />
+      <label for="course" class="form-select">Curso: </label>
+      <br />
+      <select name="course">
+        {{#each courses}}
+          <option value="{{_id}}">{{name}}</option>
+        {{else}}
+          <option value="0">Nenhum curso por enquanto</option>
+        {{/each}}
+      </select>
+      <br />
+      {{! <label for="password">Senha: </label>
+      <input type="password" name="password" class="form-control" required /> }}
+      {{! <label for="password2">Repeat your password: </label>
+      <input type="password" name="password2" class="form-control" required /> }}
 
-      <a href=""><button type="submit" class="btn btn-success mt-4">Create
-          account</button></a>
+      <a href=""><button
+          type="submit"
+          class="btn btn-success mt-4"
+        >Inscrever-se</button></a>
     </form>
   </div>
 </div>
