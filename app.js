@@ -10,8 +10,10 @@ const path = require("path"); // module that allows me to work with folders
 const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
+
 require("./models/Post");
 const Post = mongoose.model("posts");
+
 require("./models/Category");
 const Category = mongoose.model("categories");
 require("./models/Course");
@@ -80,19 +82,37 @@ mongoose
 app.use(express.static(path.join(__dirname, "public")));
 // If it doenst work, use this:
 // app.use(express.static(path.join("public/css")));
+// app.use(express.static(path.join("public/js")));
 
 // Routes
 //main route
+// app.get("/", (req, res) => {
+//   // res.send("Main route");
+//   Post.find()
+//     .lean()
+//     .populate("category")
+//     .sort({ data: "asc" })
+//     .then((posts) => {
+//       // req.flash("success_msg", "dasdjio");
+//       res.render("index", { posts: posts });
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "There was an error");
+//       console.log(err);
+//       res.redirect("/404");
+//     });
+// });
+
 app.get("/", (req, res) => {
-  // res.send("Main route");
   Post.find()
     .lean()
     .populate("category")
-    .sort({ data: "desc" })
+    .sort({ _id: -1 })
+    .limit(3)
     .then((posts) => {
-      // req.flash("success_msg", "dasdjio");
       res.render("index", { posts: posts });
     })
+
     .catch((err) => {
       req.flash("error_msg", "There was an error");
       console.log(err);
@@ -129,6 +149,7 @@ app.get("/categories", (req, res) => {
       res.redirect("/");
     });
 });
+
 app.get("/categories/:slug", (req, res) => {
   Category.findOne({ slug: req.params.slug })
     .lean()
@@ -203,7 +224,7 @@ app.get("/about", (req, res) => {
   Post.find()
     .lean()
     .populate("category")
-    .sort({ data: "desc" })
+    .sort({ _id: -1 })
     .then((posts) => {
       // req.flash("success_msg", "dasdjio");
       res.render("admin/about", { posts: posts });
@@ -215,8 +236,20 @@ app.get("/about", (req, res) => {
     });
 });
 
-app.get("/mainposts", (req, res) => {
-  res.render("post/mainposts");
+app.get("/alltheposts", (req, res) => {
+  Post.find()
+    .lean()
+    .populate("category")
+    .sort({ _id: -1 })
+    .then((posts) => {
+      // req.flash("success_msg", "dasdjio");
+      res.render("alltheposts", { posts: posts });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "There was an error");
+      console.log(err);
+      res.redirect("/404");
+    });
 });
 
 app.get("/404", (req, res) => {
@@ -230,6 +263,7 @@ app.get("/posts", (req, res) => {
 app.get("/courses", (req, res) => {
   res.send("Courses list");
 });
+
 // call routes there are in an specifict file:
 app.use("/admin", admin);
 app.use("/users", users);

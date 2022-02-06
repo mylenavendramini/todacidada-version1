@@ -30,6 +30,10 @@ const Post = new Schema({
     require: true,
     default: Date.now(),
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 // the name of the collection will be posts

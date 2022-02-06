@@ -24,7 +24,7 @@ router.get("/posts", isAdmin, (req, res) => {
 
 router.get("/categories", isAdmin, (req, res) => {
   Category.find()
-    .sort({ date: "desc" })
+    .sort({ _id: -1 })
     .then((categories) => {
       res.render("admin/categories", {
         categories: categories.map((category) => category.toJSON()),
@@ -181,7 +181,7 @@ router.get("/posts1", isAdmin, (req, res) => {
     .lean()
     .populate("category")
     // the name that I gave in the variable const Post = new Schema in Post.js
-    .sort({ data: "desc" })
+    .sort({ _id: -1 })
     .then((posts) => {
       res.render("admin/posts1", { posts: posts });
     })
@@ -259,6 +259,7 @@ router.post("/posts1/new", isAdmin, (req, res) => {
       title: req.body.title,
       description: req.body.description,
       content: req.body.content,
+      date: req.body.date,
       category: req.body.category,
       slug: req.body.slug,
     };
@@ -348,6 +349,7 @@ router.post("/posts1/edit", isAdmin, (req, res) => {
         post.slug = req.body.slug;
         post.description = req.body.description;
         post.content = req.body.content;
+        post.date = req.body.date;
         post.category = req.body.category;
 
         post
@@ -380,6 +382,20 @@ router.get("/posts1/delete/:id", isAdmin, (req, res) => {
     .catch((err) => {
       req.flash("error_msg", "Theres was an error deleting the post");
       res.redirect("/admin/posts1/");
+    });
+});
+
+router.get("/admin/posts1", isAdmin, (req, res) => {
+  Post.find()
+    .sort({ _id: -1 })
+    .then((posts) => {
+      res.render("posts", {
+        posts: posts.map((posts) => posts.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro enviando postagem principal");
+      res.redirect("/admin/posts1");
     });
 });
 
