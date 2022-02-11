@@ -1,0 +1,29 @@
+{{#each errors}}
+  <div class="alert alert-danger">
+    {{text}}
+  </div>
+{{else}}
+
+{{/each}}
+<h4>Fale com a gente! </h4>
+<div class="card">
+  <div class="card-body">
+    <form action="" method="POST">
+      <label for="name">Nome: </label>
+      <input type="text" name="name" class="form-control" required />
+      <label for="email">Email: </label>
+      <input type="email" name="email" class="form-control" required />
+      <label for="message" class="form-label">Mensagem: </label>
+      <textarea
+        class="form-control"
+        id="message"
+        rows="3"
+        name="message"
+      ></textarea>
+      <a href=""><button
+          type="submit"
+          class="btn btn-success mt-4"
+        >Enviar</button></a>
+    </form>
+  </div>
+</div>

@@ -1,24 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Course = new Schema({
+const Student = new Schema({
   name: {
     type: String,
     required: true,
   },
-
-  slug: {
+  email: {
     type: String,
     required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-
-  course: {
-    type: String,
   },
 });
 
-mongoose.model("courses", Course);
+mongoose.model("students", Student);

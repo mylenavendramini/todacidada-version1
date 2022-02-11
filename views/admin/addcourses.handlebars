@@ -2,36 +2,39 @@
   <div class="alert alert-danger">{{text}}</div>
 {{else}}
 {{/each}}
-<h3>Nova categoria</h3>
+<h3>Novo curso</h3>
 <div class="card">
   <div class="card-body">
-    <form action="/admin/categories/new" method="POST">
-      <label for="name">Nome da categoria: </label>
+    <form action="/admin/courses/new" method="POST">
+      <label for="name">Nome do curso: </label>
       <input
         type="text"
         name="name"
         id="name"
-        placeholder="Nome da categoria"
+        placeholder="course name"
         class="form-control"
+        required
       />
       <label for="slug">Slug: </label>
       <input
         type="text"
         name="slug"
         id="slug"
-        placeholder="Slug da categoria"
+        placeholder="course slug"
         class="form-control"
+        required
       />
-      <label for="description">Descrição: </label>
+      <label for="description">Descricão: </label>
       <input
         type="text"
         name="description"
         id="description"
-        placeholder="Descrição da categoria"
+        placeholder="course description"
         class="form-control"
+        required
       />
       <br />
-      <button type="submit" class="btn btn-success">Adicionar categoria</button>
+      <button type="submit" class="btn btn-success">Adicionar curso</button>
     </form>
   </div>
 </div>

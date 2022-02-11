@@ -1,24 +1,21 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Category = new Schema({
+const Message = new Schema({
   name: {
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
 
-  slug: {
+  message: {
     type: String,
     required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    default: Date.now(),
   },
 });
 
-mongoose.model("categories", Category);
+// the name of the collection will be users
+mongoose.model("messages", Message);

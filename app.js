@@ -80,6 +80,7 @@ mongoose
   });
 // Public
 app.use(express.static(path.join(__dirname, "public")));
+
 // If it doenst work, use this:
 // app.use(express.static(path.join("public/css")));
 // app.use(express.static(path.join("public/js")));
@@ -158,6 +159,7 @@ app.get("/categories/:slug", (req, res) => {
         // search in the Post the post that belong to this category that was passed in the :slug
         Post.find({ category: category._id })
           .lean()
+          .sort({ _id: -1 })
           .then((posts) => {
             res.render("categories/posts1", {
               posts: posts,
@@ -179,14 +181,14 @@ app.get("/categories/:slug", (req, res) => {
     });
 });
 
-app.get("/courses", (req, res) => {
+app.get("/users/courses", (req, res) => {
   Course.find()
     .lean()
     .then((courses) => {
-      res.render("categories/index", { courses: courses });
+      res.render("users/courses", { courses: courses });
     })
     .catch((err) => {
-      req.flash("error_msg", "There was an error listing the categories");
+      req.flash("error_msg", "Houve um erro ao listar os cursos.");
       res.redirect("/");
     });
 });
@@ -196,29 +198,68 @@ app.get("/courses/:slug", (req, res) => {
     .lean()
     .then((course) => {
       if (course) {
-        // search in the Post the post that belong to this category that was passed in the :slug
-        Post.find({ category: category._id })
-          .lean()
-          .then((posts) => {
-            res.render("categories/posts1", {
-              posts: posts,
-              categoriy: category,
-            });
-          })
-          .catch((err) => {
-            req.flash("error_msg", "There was an error listing the posts");
-            res.redirect("/");
-          });
+        res.render("courses/index", { course: course });
+        //post: post is to pass the data of the post it found
       } else {
-        req.flash("error_msg", "This category doens't exist");
+        req.flash("error_msg", "Esse curso não existe.");
         res.redirect("/");
       }
     })
     .catch((err) => {
-      req.flash("error_msg", "There was an error loading the categories");
+      req.flash("error_msg", "Houve um erro" + err);
       res.redirect("/");
     });
 });
+
+app.get("/form/:slug", (req, res) => {
+  Course.findOne({ slug: req.params.slug })
+    .lean()
+    .then((course) => {
+      if (course) {
+        res.render("form/form", { course: course });
+        //post: post is to pass the data of the post it found
+      } else {
+        req.flash("error_msg", "Não foi possível fazer a inscrição agora.");
+        res.redirect("/");
+      }
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro" + err);
+      res.redirect("/");
+    });
+});
+
+// app.get("/courses/:slug", (req, res) => {
+//   Course.findOne({ slug: req.params.slug })
+//     .lean()
+//     .then((course) => {
+//       if (course) {
+//         // search in the Course the course that belong to this course that was passed in the :slug
+//         Course.find({ course: course._id })
+//           .lean()
+//           .sort({ _id: -1 })
+//           .then((courses) => {
+//             res.render("users/courses/addcourses", {
+//               courses: courses,
+//               course: course,
+//             });
+//           })
+//           .catch((err) => {
+//             req.flash("error_msg", "Houve um erro ao mostrar o curso.");
+//             console.log(err);
+//             res.redirect("/");
+//           });
+//       } else {
+//         req.flash("error_msg", "Esse curso não existe.");
+//         res.redirect("/");
+//       }
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro ao carregar o curso.");
+//       console.log(err);
+//       res.redirect("/");
+//     });
+// });
 
 app.get("/about", (req, res) => {
   Post.find()
@@ -252,16 +293,20 @@ app.get("/alltheposts", (req, res) => {
     });
 });
 
+app.get("/faq", (req, res) => {
+  res.render("faq/index");
+});
+
+app.get("/course1", (req, res) => {
+  res.render("courses/course1");
+});
+
 app.get("/404", (req, res) => {
   res.send("Error 404");
 });
 
 app.get("/posts", (req, res) => {
   res.send("Post list");
-});
-
-app.get("/courses", (req, res) => {
-  res.send("Courses list");
 });
 
 // call routes there are in an specifict file:

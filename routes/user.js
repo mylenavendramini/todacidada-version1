@@ -5,15 +5,111 @@ const router = express.Router();
 const mongoose = require("mongoose");
 require("../models/User");
 const User = mongoose.model("users");
+require("../models/Course");
+const Course = mongoose.model("courses");
+require("../models/Student");
+require("../models/Message");
+const Message = mongoose.model("messages");
+require("../models/Student");
+const Student = mongoose.model("students");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
-router.get("/register", (req, res) => {
-  res.render("users/register");
+// router.get("/register", (req, res) => {
+//   res.render("users/register");
+// });
+
+// router.get("/register", (req, res) => {
+//   Course.find()
+//     .lean()
+//     .populate("course")
+//     // the name that I gave in the variable const Post = new Schema in Post.js
+//     .sort({ _id: -1 })
+//     .then((courses) => {
+//       res.render("users/register", { courses: courses });
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro ao abrir as inscrições", err);
+//       res.redirect("/");
+//     });
+// });
+
+// router.get("/register/add", (req, res) => {
+//   Course.find()
+//     .lean()
+//     .then((courses) => {
+//       // Return all the categories (find), then pass all the categories into the posts1:
+//       res.render("users/register", { courses: courses });
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um errin", err);
+//       res.redirect("/");
+//     });
+// });
+// router.get("/courses", (req, res) => {
+//   res.render("users/courses");
+// });
+
+// router.get("/courses/:slug/add", (req, res) => {
+//   Course.find()
+//     .lean()
+//     .then((courses) => {
+//       // Return all the categories (find), then pass all the categories into the posts1:
+//       res.render("users/addcourses", { courses: courses });
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro ao carregar o curso! :(" + err);
+//       res.redirect("/");
+//     });
+// });
+
+// validate the register.handlebars form
+// router.post("/courses/new", (req, res) => {
+//   // form validation
+//   const errors = [];
+//   if (
+//     !req.body.name ||
+//     typeof req.body.name == undefined ||
+//     req.body.name == null
+//   ) {
+//     errors.push({ text: "Invalid name" });
+//   }
+//   if (
+//     !req.body.email ||
+//     typeof req.body.email == undefined ||
+//     req.body.email == null
+//   ) {
+//     errors.push({ text: "Invalid email" });
+//   }
+
+//   if (errors.length > 0) {
+//     res.render("/", { errors: errors });
+//   } else {
+//   // register the user in the database
+//   const newStudent = {
+//     // save new User inside the variable newUser
+//     name: req.body.name,
+//     email: req.body.email,
+//   };
+//   new Student(newStudent)
+//     .save()
+//     .then(() => {
+//       req.flash("success_msg", "Inscrição feita com sucesso!");
+//       res.redirect("/users/courses");
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro ao realizar a inscrição." + err);
+//       res.redirect("/users/courses");
+//     });
+// }
+// });
+
+router.get("/contact", (req, res) => {
+  res.render("users/contact");
 });
 
 // validate the register.handlebars form
-router.post("/register", (req, res) => {
+router.post("/contact", (req, res) => {
   // form validation
   const errors = [];
   if (
@@ -30,80 +126,57 @@ router.post("/register", (req, res) => {
   ) {
     errors.push({ text: "Invalid email" });
   }
-
   if (
-    !req.body.password ||
-    typeof req.body.password == undefined ||
-    req.body.password == null
+    !req.body.message ||
+    typeof req.body.message == undefined ||
+    req.body.message == null
   ) {
-    errors.push({ text: "Invalid password" });
+    errors.push({ text: "Invalid message" });
   }
 
-  // if (req.body.name.length < 2) {
-  //   errors.push({ text: "Category name is too short" });
-  // }
-
-  if (req.body.password.length < 8) {
-    errors.push({ text: "Password needs to have at least 8 characters" });
-  }
-
-  if (req.body.password != req.body.password2) {
-    errors.push({ text: "Passwords don't match. Try again." });
-  }
   if (errors.length > 0) {
-    res.render("users/register", { errors: errors });
+    res.render("users/contact", { errors: errors });
   } else {
-    // verify if the email that the user is trying to register already doesnt exist in the database
-    User.findOne({ email: req.body.email })
-      .lean()
-      .then((user) => {
-        if (user) {
-          // here, it means that theres already an user with the email (req.body.email) register already
-          req.flash(
-            "error_msg",
-            "There is already an account with this email in the system"
-          );
-          res.redirect("/users/register");
-        } else {
-          // register the user in the database
-          const newUser = new User({
-            // save new User inside the variable newUser
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-            // I dont need to pass isAdmin becasue the defalut value is 0 already
-            // isAdmin: 1,
-          });
-          // I cant only save here, I need to hash it:
-
-          bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
-              if (err) {
-                req.flash("err_msg", "There was an error saving the user");
-                res.redirect("/");
-              }
-              newUser.password = hash;
-              // Im getting password that is inside newUser and saying that it = the hash that was created and was passed in the hash parameter (err, hash)
-              newUser
-                .save()
-                .then(() => {
-                  req.flash("success_msg", "User was created successfully");
-                  res.redirect("/");
-                })
-                .catch((err) => {
-                  req.flash(
-                    "error_msg",
-                    "There was an error creating the user. Try again."
-                  );
-                  res.redirect("/users/register");
-                });
-            });
-          });
-        }
+    // register the user in the database
+    // const newMessage = {
+    //   // save new Message inside the variable newMessage
+    //   name: req.body.name,
+    //   email: req.body.email,
+    //   message: req.body.message,
+    // };
+    // //create a new course:
+    // new Message(newMessage)
+    //   .save()
+    //   .then(() => {
+    //     req.flash("success_msg", "A mensagem foi enviada com sucesso!");
+    //     res.redirect("/");
+    //   })
+    //   .catch((err) => {
+    //     req.flash(
+    //       "error_msg",
+    //       "Houve um erro ao tentar enviar a mensagem. Tente novamente!" + err
+    //     );
+    //     console.log(err);
+    //     res.redirect("/users/contact");
+    //   });
+    const newMessage = new Message({
+      // save new Message inside the variable newMessage
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    });
+    newMessage
+      .save()
+      .then(() => {
+        req.flash("success_msg", "A mensagem foi enviada com sucesso!");
+        res.redirect("/");
       })
       .catch((err) => {
-        req.flash("error_msg", "There was an error");
-        res.redirect("/");
+        req.flash(
+          "error_msg",
+          "Houve um erro ao tentar enviar a mensagem. Tente novamente!" + err
+        );
+        res.redirect("/users/contact");
       });
   }
 });

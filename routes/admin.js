@@ -22,6 +22,8 @@ router.get("/posts", isAdmin, (req, res) => {
 //   res.render("admin/categories");
 // });
 
+///////// -- CATEGORIES
+
 router.get("/categories", isAdmin, (req, res) => {
   Category.find()
     .sort({ _id: -1 })
@@ -72,6 +74,7 @@ router.post("/categories/new", isAdmin, (req, res) => {
       name: req.body.name,
       // slug is the link for the categories that will be in the browser URL
       slug: req.body.slug,
+      description: req.body.description,
     };
     //create a new category:
     new Category(newCategory)
@@ -83,7 +86,8 @@ router.post("/categories/new", isAdmin, (req, res) => {
       .catch((err) => {
         req.flash(
           "error_msg",
-          "There was an error when you tried to create the category. Try again"
+          "There was an error when you tried to create the category. Try again" +
+            err
         );
         res.redirect("/admin");
       });
@@ -169,12 +173,35 @@ router.post("/categories/delete", isAdmin, (req, res) => {
       res.redirect("/admin/categories");
     })
     .catch((err) =>
-      req.flash("error_msg", "There was an error deleting the category")
+      req.flash("error_msg", "Houve um erro ao excluir a categoria.")
     );
   res.redirect("/admin/categories");
   // which category I want to remove? The one that has the _id req.body.id
   // I use body because this information comes from the form I created in categories.handlebars
 });
+
+// router.get("/categories/delete", isAdmin, (req, res) => {
+//   res.render("admin/deletecategories");
+//   // which category I want to remove? The one that has the _id req.body.id
+//   // I use body because this information comes from the form I created in categories.handlebars
+// });
+
+// router.post("/categories/delete-category", isAdmin, (req, res) => {
+//   Category.remove({ _id: req.body.id })
+//     .then(() => {
+//       req.flash("success_msg", "Category deleted successfuly");
+//       // this message is not showing!!
+//       res.redirect("/admin/categories");
+//     })
+//     .catch((err) =>
+//       req.flash("error_msg", "Houve um erro ao excluir a categoria.")
+//     );
+//   res.redirect("/admin/categories");
+//   // which category I want to remove? The one that has the _id req.body.id
+//   // I use body because this information comes from the form I created in categories.handlebars
+// });
+
+///////// -- POSTS
 
 router.get("/posts1", isAdmin, (req, res) => {
   Post.find()
@@ -397,6 +424,184 @@ router.get("/admin/posts1", isAdmin, (req, res) => {
       req.flash("error_msg", "Houve um erro enviando postagem principal");
       res.redirect("/admin/posts1");
     });
+});
+
+///////// -- COURSES
+
+router.get("/courses", isAdmin, (req, res) => {
+  Course.find()
+    .sort({ _id: -1 })
+    .then((courses) => {
+      res.render("admin/courses", {
+        courses: courses.map((course) => course.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao mostrar os cursos.");
+      console.log(err);
+      res.redirect("/admin");
+    });
+});
+
+router.get("/courses/add", isAdmin, (req, res) => {
+  res.render("admin/addcourses");
+});
+
+router.post("/courses/new", isAdmin, (req, res) => {
+  // form validation:
+  const errors = [];
+
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Invalid name" });
+  }
+  if (
+    !req.body.slug ||
+    typeof req.body.slug == undefined ||
+    req.body.slug == null
+  ) {
+    errors.push({ text: "Invalid slug" });
+  }
+
+  if (
+    !req.body.description ||
+    typeof req.body.description == undefined ||
+    req.body.description == null
+  ) {
+    errors.push({ text: "Invalid description" });
+  }
+
+  // I could even put more
+
+  if (req.body.name.length < 2) {
+    errors.push({ text: "course name is too short" });
+  }
+  if (errors.length > 0) {
+    res.render("admin/addcourses", { errors: errors });
+  } else {
+    const newCourse = {
+      // this name and slug (body.) refers to the name in the input (inside addcourses.handlebars)
+      name: req.body.name,
+      // slug is the link for the courses that will be in the browser URL
+      slug: req.body.slug,
+      description: req.body.description,
+    };
+    //create a new course:
+    new Course(newCourse)
+      .save()
+      .then(() => {
+        req.flash("success_msg", "O curso foi criado com sucesso!");
+        res.redirect("/admin/courses");
+      })
+      .catch((err) => {
+        req.flash(
+          "error_msg",
+          "Houve um erro ao tentar criar um novo curso. Tente novamente!" + err
+        );
+        console.log(err);
+        res.redirect("/admin");
+      });
+    // To check the courses that the users did:
+    // $ mongod
+    // > show databases;
+    // > use learning;
+    // > show collections;
+    // > db.users.find()
+  }
+});
+
+router.get("/courses/edit/:id", isAdmin, (req, res) => {
+  Course.findOne({ _id: req.params.id })
+    .lean()
+    .then((course) => {
+      res.render("admin/editcourses", { course: course });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Este curso não existe!");
+      res.redirect("/admin/courses");
+    });
+});
+
+router.post("/courses/edit", isAdmin, (req, res) => {
+  // form validation:
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Invalid name" });
+  }
+  if (
+    !req.body.slug ||
+    typeof req.body.slug == undefined ||
+    req.body.slug == null
+  ) {
+    errors.push({ text: "Invalid slug" });
+  }
+  if (
+    !req.body.description ||
+    typeof req.body.description == undefined ||
+    req.body.description == null
+  ) {
+    errors.push({ text: "Invalid description" });
+  }
+  if (req.body.name.length < 2) {
+    errors.push({ text: "course name is too short" });
+  }
+  if (errors.length > 0) {
+    // send error message here
+    res.render("admin/courses/edit", { errors: errors });
+  }
+
+  // apply the editions:
+  else {
+    Course.findOne({ _id: req.body.id })
+      .then((course) => {
+        // The name of the course that the user want to edit (course.name) should receive the value that is coming from the edition form (req.body.name):
+        course.name = req.body.name;
+        course.slug = req.body.slug;
+        course.description = req.body.description;
+        course
+          .save()
+          .then(() => {
+            req.flash("success_msg", "Curso editado com sucesso!");
+            res.redirect("/admin/courses");
+          })
+          .catch((err) => {
+            req.flash(
+              "error_msg",
+              "Houve um erro ao salvar o curso. Tente novamente!"
+            );
+            console.log(err);
+            res.redirect("/admin/courses");
+          });
+      })
+      .catch((err) => {
+        req.flash("error_msg", "Houve um erro interno. Desculpe!");
+        console.log(err);
+        res.redirect("/admin/courses");
+      });
+  }
+});
+
+router.post("/courses/delete", isAdmin, (req, res) => {
+  Course.remove({ _id: req.body.id })
+    .then(() => {
+      req.flash("success_msg", "Curso excluído com sucesso!");
+      // this message is not showing!!
+      res.redirect("/admin/courses");
+    })
+    .catch((err) =>
+      req.flash("error_msg", "Houve um erro ao excluir o curso.")
+    );
+  console.log(err);
+  res.redirect("/admin/courses");
+  // which course I want to remove? The one that has the _id req.body.id
+  // I use body because this information comes from the form I created in categories.handlebars
 });
 
 ///////////////////

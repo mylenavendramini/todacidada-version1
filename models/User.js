@@ -21,6 +21,12 @@ const User = new Schema({
     type: String,
     required: true,
   },
+
+  course: {
+    type: Schema.Types.ObjectId,
+    ref: "courses",
+    required: true,
+  },
 });
 
 // the name of the collection will be users
