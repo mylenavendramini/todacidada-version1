@@ -1,5 +1,3 @@
-// --------FAQ
-
 const answers = document.querySelectorAll(".accordion-custom");
 answers.forEach((event) => {
   event.addEventListener("click", () => {
