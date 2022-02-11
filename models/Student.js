@@ -10,6 +10,10 @@ const Student = new Schema({
     type: String,
     required: true,
   },
+  course: {
+    type: Schema.Types.ObjectId,
+    ref: "courses",
+  },
 });
 
 mongoose.model("students", Student);

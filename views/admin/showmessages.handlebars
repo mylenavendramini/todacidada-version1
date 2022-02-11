@@ -1,0 +1,16 @@
+<h2>Mensagens: </h2>
+<hr />
+
+{{#each messages}}
+  <div class="card mt-4">
+    <div class="card-body">
+
+      <p>Nome: {{name}}</p>
+      <small>Email: {{email}}</small><br />
+      <small>Messagem: {{message}}</small><br />
+    </div>
+  </div>
+{{else}}
+  <p>Não há mensagens ainda.</p>
+{{/each}}
+<br />

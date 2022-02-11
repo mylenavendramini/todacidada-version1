@@ -6,6 +6,10 @@ require("../models/Category");
 const Category = mongoose.model("categories");
 require("../models/Post");
 const Post = mongoose.model("posts");
+require("../models/Message");
+const Message = mongoose.model("messages");
+require("../models/Student");
+const Student = mongoose.model("students");
 const { isAdmin } = require("../helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
 require("../models/Course");
 const Course = mongoose.model("courses");
@@ -602,6 +606,62 @@ router.post("/courses/delete", isAdmin, (req, res) => {
   res.redirect("/admin/courses");
   // which course I want to remove? The one that has the _id req.body.id
   // I use body because this information comes from the form I created in categories.handlebars
+});
+
+router.get("/admin/messages", isAdmin, (req, res) => {
+  Message.find()
+    .sort({ _id: -1 })
+    .then((messages) => {
+      res.render("admin/showmessages", {
+        messages: messages.map((messages) => messages.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao mostrar as mensagens");
+      res.redirect("/admin");
+    });
+});
+
+router.get("/messages", isAdmin, (req, res) => {
+  Message.find()
+    .lean()
+    // the name that I gave in the variable const Post = new Schema in Post.js
+    .sort({ _id: -1 })
+    .then((messages) => {
+      res.render("admin/showmessages", { messages: messages });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao listar as mensagens.");
+      res.redirect("/admin");
+    });
+});
+
+router.get("/students", isAdmin, (req, res) => {
+  Student.find()
+    .lean()
+    // the name that I gave in the variable const Post = new Schema in Post.js
+    .sort({ _id: -1 })
+    .then((students) => {
+      res.render("admin/showstudents", { students: students });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao listar as inscriçoes.");
+      res.redirect("/admin");
+    });
+});
+
+router.get("/admin/students", isAdmin, (req, res) => {
+  Student.find()
+    .sort({ _id: -1 })
+    .then((students) => {
+      res.render("admin/showstudents", {
+        students: students.map((students) => students.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao mostrar as inscrições");
+      res.redirect("/admin");
+    });
 });
 
 ///////////////////

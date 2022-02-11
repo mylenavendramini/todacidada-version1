@@ -16,6 +16,9 @@ const Post = mongoose.model("posts");
 
 require("./models/Category");
 const Category = mongoose.model("categories");
+require("./models/Student");
+const Student = mongoose.model("students");
+
 require("./models/Course");
 const Course = mongoose.model("courses");
 const users = require("./routes/user");
@@ -211,22 +214,92 @@ app.get("/courses/:slug", (req, res) => {
     });
 });
 
-app.get("/form/:slug", (req, res) => {
-  Course.findOne({ slug: req.params.slug })
+app.get("/form", (req, res) => {
+  Course.find()
     .lean()
-    .then((course) => {
-      if (course) {
-        res.render("form/form", { course: course });
-        //post: post is to pass the data of the post it found
-      } else {
-        req.flash("error_msg", "Não foi possível fazer a inscrição agora.");
-        res.redirect("/");
-      }
+    .populate("course")
+    // the name that I gave in the variable const Post = new Schema in Post.js
+    .sort({ _id: -1 })
+    .then((courses) => {
+      res.render("form/form", { courses: courses });
     })
     .catch((err) => {
-      req.flash("error_msg", "Houve um erro" + err);
+      req.flash("error_msg", "There was an error listing the courses");
       res.redirect("/");
     });
+});
+
+// app.get("/form/:slug", (req, res) => {
+//   Course.findOne({ slug: req.params.slug })
+//     .lean()
+//     .then((course) => {
+//       if (course) {
+//         res.render("form/form", { course: course });
+//         //post: post is to pass the data of the post it found
+//       } else {
+//         req.flash("error_msg", "Não foi possível abrir a inscrição agora.");
+//         res.redirect("/");
+//       }
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro" + err);
+//       res.redirect("/");
+//     });
+// });
+
+// validate the register.handlebars form
+app.post("/form", (req, res) => {
+  // form validation
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Invalid name" });
+  }
+  if (
+    !req.body.email ||
+    typeof req.body.email == undefined ||
+    req.body.email == null
+  ) {
+    errors.push({ text: "Invalid email" });
+  }
+
+  if (errors.length > 0) {
+    res.render("users/courses", { errors: errors });
+  } else {
+    Course.find()
+      .lean()
+      .then((courses) => {
+        // Return all the categories (find), then pass all the categories into the posts1:
+        res.render("form/form", { courses: courses });
+        const newStudent = new Student({
+          // save new Message inside the variable newMessage
+          name: req.body.name,
+          email: req.body.email,
+          course: req.body.course,
+        });
+        newStudent
+          .save()
+          .then(() => {
+            req.flash("success_msg", "A inscrição foi feita com sucesso!");
+            res.redirect("/");
+          })
+          .catch((err) => {
+            req.flash(
+              "error_msg",
+              "Houve um erro ao tentar fazer sua inscrição. Tente novamente!" +
+                err
+            );
+            res.redirect("/");
+          });
+      })
+      .catch((err) => {
+        req.flash("error_msg", "There was an error loading the form");
+        res.redirect("/admin");
+      });
+  }
 });
 
 // app.get("/courses/:slug", (req, res) => {
