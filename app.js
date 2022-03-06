@@ -82,11 +82,11 @@ mongoose
     console.log("Error in connection" + err);
   });
 // Public
-app.use("/public", express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 // If it doenst work, use this:
-app.use(express.static(path.join("public/css")));
-app.use(express.static(path.join("public/js")));
+// app.use(express.static(path.join("public/css")));
+// app.use(express.static(path.join("public/js")));
 
 // Routes
 //main route
