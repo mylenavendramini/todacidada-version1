@@ -64,7 +64,7 @@ app.engine(
   "handlebars",
   engine({
     extname: "handlebars",
-    defaultLayout: "main",
+    defaultLayout: "test",
     layoutsDir: __dirname + "/views/layouts/",
   })
 );
