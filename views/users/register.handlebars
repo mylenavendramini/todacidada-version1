@@ -1,0 +1,45 @@
+{{#each errors}}
+  <div class="alert alert--danger">
+    {{text}}
+  </div>
+{{else}}
+
+{{/each}}
+
+<section class="section" id="section--4">
+  <div class="section__line">
+    <h3 class="section__header">
+      {{! Escrever algo. }}
+      <div class="line__horizontal line__horizontal--3"></div>
+    </h3>
+  </div>
+
+  <div class="form__card">
+    <h5>fazer login </h5>
+    <div class="form__container">
+      <form action="" method="POST">
+        <label for="name">nome: </label>
+        <input type="text" name="name" class="form__form login" required />
+        <label for="email">email: </label>
+        <input type="email" name="email" class="form__form login" required />
+        <label for="password">senha: </label>
+        <input
+          type="password"
+          name="password"
+          class="form__form login"
+          required
+        />
+        <label for="password2">repita sua senha: </label>
+        <input
+          type="password"
+          name="password2"
+          class="form__form login"
+          required
+        />
+        <br />
+
+        <a href=""><button type="submit" class="btn--text">criar uma conta</button></a>
+      </form>
+    </div>
+  </div>
+</section>

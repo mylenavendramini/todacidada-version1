@@ -123,6 +123,56 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/", (req, res) => {
+  // form validation
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Invalid name" });
+  }
+  if (
+    !req.body.email ||
+    typeof req.body.email == undefined ||
+    req.body.email == null
+  ) {
+    errors.push({ text: "Invalid email" });
+  }
+  if (
+    !req.body.message ||
+    typeof req.body.message == undefined ||
+    req.body.message == null
+  ) {
+    errors.push({ text: "Invalid message" });
+  }
+
+  if (errors.length > 0) {
+    res.render("/", { errors: errors });
+  } else {
+    const newMessage = new Message({
+      // save new Message inside the variable newMessage
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    });
+    newMessage
+      .save()
+      .then(() => {
+        req.flash("success_msg", "A mensagem foi enviada com sucesso!");
+        res.redirect("/");
+      })
+      .catch((err) => {
+        req.flash(
+          "error_msg",
+          "Houve um erro ao tentar enviar a mensagem. Tente novamente!" + err
+        );
+        res.redirect("/");
+      });
+  }
+});
+
 app.get("/404", (req, res) => {
   res.send("Error 404");
 });
