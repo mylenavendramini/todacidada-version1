@@ -1,89 +1,78 @@
-{{!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Toda Cidadã</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home
-          <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/categories">Categories</a>
-      </li>
-      {{#if user}}
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/users/logout">Logout</a>
-        </li>
-      {{else}}
 
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/users/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/users/register">Register</a>
-        </li>
-      {{/if}}
-    </ul>
+<nav class="nav">
+        {{! <img
+          src="logoprincipaltagline.png"
+          type="image/pnj"
+          alt="TodaCidada logo"
+          class="nav__logo"
+          id="logo"
+          data-version-number=""
+        /> }}
 
-  </div>
-</nav>
- --}}
+        <ul class="nav__links">
+          <li class="nav__logo" id="logo">
+            <a class="nav__link" href="/">toda <br /> cidadã</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">quem somos</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">nossos cursos</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--4">contato</a>
+          </li>
+          {{! <li class="nav__item">
+            <!-- HAVE TO GO TO THE LINK -->
+            <a class="nav__link" href="#section--3">Prices</a>
+          </li> }}
+          {{!-- <li class="nav__item">
+            <a
+              class="nav__link nav__link--btn btn--show-modal--login"
+              href="#"
+            >Login</a>
+          </li> --}}
+          {{! <li class="nav__item">
+            <a
+              class="nav__link nav__link--btn btn--show-modal--singup"
+              href="#"
+            >Sing Up</a>
+          </li> }}
+        </ul>
+        <!-- POR CAUSA DISSO, A NAV BAR TA INDO PRA ESQUERDA: -->
+        
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </li>
+      
+      </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img
-        src="/docs/5.1/assets/brand/bootstrap-logo.svg"
-        alt=""
-        width="30"
-        height="24"
-        class="d-inline-block align-text-top"
-      />
-      Toda Cidadã
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarTogglerDemo02"
-      aria-controls="navbarTogglerDemo02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/about">Quem somos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/courses">Cursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/faq">Perguntas frequentes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/contact">Fale com a gente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/alltheposts">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Doe agora</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <div class="overlay hidden"></div>
+{{!-- 
+      <section class="section" id="section--1">
+      <div class="header__title">
+        <!-- <h1 onclick="alert('HTML alert')"> -->
+        <h1 class="toda">
+          <!-- Green highlight effect -->
+          <!-- <span class="highlight">Organize</span><br /> -->
+          <!-- Organize <br />your life with <br />HaveToDo -->
+          <!-- <span class="highlight">HaveToDo</span> -->
+          <!-- Green highlight effect -->
+          toda
+        </h1>
+        <h1 class="cidada">
+          cidadã
+        </h1>
+
+        <h4 class="toda">
+          educação política para mulheres e jovens
+        </h4>
+        <button class="btn--text btn--scroll-to">saiba mais &DownArrow;</button>
+        <!-- Image -->
+        <!-- <img src="main.jpg" class="header__img" alt="Minimalist bank items" /> -->
+      </div>
+      
+    </section> --}}

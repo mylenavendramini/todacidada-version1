@@ -1,15 +1,27 @@
-<h4>Login: </h4>
-<div class="card">
-  <div class="card-body">
-    <form action="/users/login" method="POST">
-      <label for="email">Email: </label>
-      <input type="email" name="email" class="form-control" required />
-      <label for="password">Password: </label>
-      <input type="password" name="password" class="form-control" required />
-      <a href=""><button
-          type="submit"
-          class="btn btn-success mt-4"
-        >Entrar</button></a>
-    </form>
+<section class="section" id="section--4">
+  <div class="section__line">
+    <h3 class="section__header">
+      {{! Escrever algo. }}
+      <div class="line__horizontal line__horizontal--3"></div>
+    </h3>
   </div>
-</div>
+
+  <div class="form__card">
+    <h5>fazer login </h5>
+    <div class="form__container">
+      <form action="/users/login" method="POST">
+        <label for="email">email: </label>
+        <input type="email" name="email" class="form__form login" required />
+        <label for="password">senha: </label>
+        <input
+          type="password"
+          name="password"
+          class="form__form login"
+          required
+        />
+        <br />
+        <a href=""><button type="submit" class="btn--text">entrar</button></a>
+      </form>
+    </div>
+  </div>
+</section>

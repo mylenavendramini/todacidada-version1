@@ -1,5 +1,8 @@
 "use strict";
 
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav__links");
+const navLink = document.querySelectorAll(".nav__link");
 const modalLogin = document.querySelector(".modal--login");
 const modalSingUp = document.querySelector(".modal--singup");
 const overlay = document.querySelector(".overlay");
@@ -7,7 +10,7 @@ const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModalLogin = document.querySelector(".btn--show-modal--login");
 const btnsOpenModalSingUp = document.querySelector(".btn--show-modal--singup");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
+const section2 = document.querySelector("#section--2");
 const nav = document.querySelector(".nav");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
@@ -16,6 +19,39 @@ const loginToChange = document.querySelector(".btn--SignUpToChange");
 const signUpToChange = document.querySelector(".btn--LoginToChange");
 
 ///////////////////////////////////////
+// Hamburger menu
+
+// Open hamburger:
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+  overlay.classList.toggle("hidden");
+}
+
+// Closing the hamburger when click some link
+navLink.forEach((n) => n.addEventListener("click", closeHamburger));
+
+function closeHamburger() {
+  hamburger.classList.remove("active");
+  navMenu.classList.remove("active");
+  overlay.classList.add("hidden");
+}
+
+// Closing the hamburger when click outside
+
+overlay.addEventListener("click", closeHamburger);
+
+// Closing the hamburger when button scape
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+    closeHamburger();
+  }
+});
+
 // Modal window
 
 const openModalLogin = function (e) {
@@ -66,7 +102,7 @@ loginToChange.addEventListener("click", function (e) {
 ///////////////////////////////////////
 // Button scrolling
 btnScrollTo.addEventListener("click", function (e) {
-  const s1coords = section1.getBoundingClientRect();
+  const s1coords = section2.getBoundingClientRect();
   console.log(s1coords);
 
   console.log(e.target.getBoundingClientRect());
@@ -91,7 +127,7 @@ btnScrollTo.addEventListener("click", function (e) {
   //   behavior: 'smooth',
   // });
 
-  section1.scrollIntoView({ behavior: "smooth" });
+  section2.scrollIntoView({ behavior: "smooth" });
 });
 
 ///////////////////////////////////////
@@ -490,7 +526,7 @@ console.log(h1.parentElement.children);
 
 ///////////////////////////////////////
 // Sticky navigation
-const initialCoords = section1.getBoundingClientRect();
+const initialCoords = section2.getBoundingClientRect();
 console.log(initialCoords);
 
 window.addEventListener('scroll', function () {

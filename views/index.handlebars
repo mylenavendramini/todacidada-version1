@@ -1,112 +1,346 @@
-<div class="bg-light p-5 rounded-lg m-3">
-  <h1 class="display-4">Toda Cidadã</h1>
-  <p class="lead">Descricão do projeto</p>
-  <hr class="my-4" />
-  <p>Bla bla bla bla.</p>
-</div>
-<hr />
 
-<div class="slider">
-  
-  <div class="slide">
-    <div class="testimonial-container">
-      <div class="row">
-        <div class="col">
-          <h5 class="testimonial__header">Escrita Criativa</h5>
-          <p class="testimonial__text">
-              Texto sobre o curso texto sobre o curso texto sobre o curso.
-              Texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso.
-          </p>
-          <a class="btn btn-outline-dark btn-sm btn-margin" href="/users/courses">Ver todos os cursos</a>
-          
-        </div>
-        <div class="col">
-          <address class="testimonial__author">
-          <img src="/Public/img/clean.jpg" alt="" class="testimonial__photo" />
-            {{!-- <h6 class="testimonial__name">Nome</h6>
-            <p class="testimonial__location">Local</p> --}}
-        </address>
-        </div>
-        <div class="w-100"></div>
+   <section class="section" id="section--1">
+      <div class="header__title">
+        <!-- <h1 onclick="alert('HTML alert')"> -->
+        <h1 class="toda">
+          <!-- Green highlight effect -->
+          <!-- <span class="highlight">Organize</span><br /> -->
+          <!-- Organize <br />your life with <br />HaveToDo -->
+          <!-- <span class="highlight">HaveToDo</span> -->
+          <!-- Green highlight effect -->
+          toda
+        </h1>
+        <h1 class="cidada">
+          cidadã
+        </h1>
+
+        <h4 class="toda">
+          educação política para mulheres e jovens
+        </h4>
+        <button class="btn--text btn--scroll-to">saiba mais &DownArrow;</button>
+        <!-- Image -->
+        <!-- <img src="main.jpg" class="header__img" alt="Minimalist bank items" /> -->
       </div>
-    </div>
-  </div>
-
-  <div class="slide">
-    <div class="testimonial-container">
-      <div class="row">
-        <div class="col">
-          <h5 class="testimonial__header">Nome do curso 2</h5>
-          <p class="testimonial__text">
-              Texto sobre o curso texto sobre o curso texto sobre o curso.
-              Texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso.
-          </p>
-          <a class="btn btn-outline-dark btn-sm btn-margin" href="/users/courses">Ver todos os cursos</a>
-        </div>
-        <div class="col">
-          <address class="testimonial__author">
-          <img src="/Public/img/clean.jpg" alt="" class="testimonial__photo" />
-            {{!-- <h6 class="testimonial__name">Nome</h6>
-            <p class="testimonial__location">Local</p> --}}
-        </address>
-        </div>
-        <div class="w-100"></div>
+      
+    </section>
+   
+    
+    <section class="section" id="section--2">
+      <div class="section__line">
+        <h3 class="section__header">
+          {{! Escrever algo }}
+          <div class="line__horizontal line__horizontal--1"></div>
+        </h3>
       </div>
-    </div>
-  </div>
-
-  <div class="slide">
-    <div class="testimonial-container">
-      <div class="row">
-        <div class="col">
-          <h5 class="testimonial__header">Nome do curso 3</h5>
-          <p class="testimonial__text">
-              Texto sobre o curso texto sobre o curso texto sobre o curso.
-              Texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso texto sobre o curso.
-              Texto sobre o curso texto sobre o curso.
+      <div class="description">
+        <div class="">
+          <p>
+            A marca foi criada com o objetivo de democratizar por meio da troca a
+            educação política para mulheres e jovens. Vivemos um período político
+            no Brasil, no qual se faz necessário a disseminação de conhecimento,
+            principalmente dos direitos dos cidadãos.
           </p>
-          <a class="btn btn-outline-dark btn-sm btn-margin" href="/users/courses" >Ver todos os cursos</a>
+        </div>  
+          <div class="description__feature">
+            <h5 class="description__header">NOSSO <b>PROPÓSITO</b></h5>
+          </div>
+          <div class="description__feature">
+            <h5 class="description__header">NOSSOS <b>VALORES</b>
+              <br />
+              <br />
+              <br />
+              RESPEITO | TRANSFORMAÇÃO CONEXÃO | PLURAL | HUMANO
+            </h5>
+          </div>
+          <div class="">
+            <p>
+              A marca busca expandir o acesso a educação política para as pessoas
+              que estão "isoladas" socialmente. Desta forma, nossa missão é garantir
+              mulheres e jovens tenham um espaço onde possam trocar conhecimentos e
+              vivências de forma a facilitar a organização política e econômica como
+              meio de garantia de acesso aos seus direitos
+            </p>
+          </div>
+
         </div>
-        <div class="col">
-          <address class="testimonial__author">
-          <img src="/Public/img/clean.jpg" alt="" class="testimonial__photo" />
-            {{!-- <h6 class="testimonial__name">Nome</h6>
-            <p class="testimonial__location">Local</p> --}}
-        </address>
-        </div>
-        <div class="w-100"></div>
+
+    </section>
+
+    <section class="section" id="section--3">
+      <div class="section__line">
+        <h3 class="section__header">
+          {{! Escrever algo. }}
+          <div class="line__horizontal line__horizontal--2"></div>
+        </h3>
+        <br />
+
+        <button class="btn--text">
+          {{!-- Todos os cursos --}}
+          <!-- Learn more &DownArrow; -->
+        </button>
       </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            CURSO
+          </button>
+          {{! <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>02</span>Curso
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>03</span>Curso
+          </button> }}
+        </div>
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+        <img class="operations--img" src="" alt="task" />
+          {{!-- <div class="operations__icon operations__icon--1">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-upload"></use>
+            </svg>
+            
+          </div> --}}
+          <h5 class="operations__header">
+            Curso de ...........
+          </h5>
+          <p>
+            O curso trata de ... curso trata de ... curso trata de ... curso
+            trata de ... curso trata de ... curso trata de ... curso trata de
+            ...... curso trata de ... curso trata de ...
+            <br />
+            <br />
+            <button class="btn--text">
+              inscreva-se já
+              <!-- Learn more &DownArrow; -->
+            </button>
+          </p>
+        </div>
+
+        {{!-- <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2">
+            <!-- <svg>
+              <use xlink:href="img/icons.svg#icon-home"></use>
+            </svg> -->
+            <img class="operations--img" src="" alt="language" />
+          </div>
+          <h5 class="operations__header">
+            Set a goal and a deadline for achieving it. Choose the best method
+            and learn a new language.
+          </h5>
+          <p>
+            Discover a new culture and expand your knowledge in a fun way with
+            this model from HaveToDo. You will benefit from all the advantages
+            of learning a new language by defining the best study method for
+            you.
+            <br />
+            <button class="btn--text">
+              Check it out!
+              <!-- Learn more &DownArrow; -->
+            </button>
+          </p>
+        </div>
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3">
+            <!-- <svg>
+              <use xlink:href="img/icons.svg#icon-user-x"></use>
+            </svg> -->
+            <img class="operations--img" src="" alt="book" />
+          </div>
+
+          <h5 class="operations__header">
+            Get your ideas off paper and start planning your book.
+          </h5>
+          <p>
+            With this model from HaveToDo, you plan your writing in the way that
+            best suits you so that you can focus on what matters most:
+            fulfilling your dream of writing your book.
+            <br />
+            <button class="btn--text">
+              Check it out!
+              <!-- Learn more &DownArrow; -->
+            </button>
+          </p>
+        </div>
+      </div> --}}
+    </section>
+
+    <section class="section" id="section--4">
+      <div class="section__line">
+        <h3 class="section__header">
+          {{! Escrever algo. }}
+          <div class="line__horizontal line__horizontal--3"></div>
+        </h3>
+      </div> 
+
+      
+      <div class="form__card">
+        <h5>fale com a gente</h5>
+          <div class="form__container">
+            <form action="" method="POST">
+              <label for="name">nome: </label>
+              <input type="text" name="name" class="form__form" required />
+              <label for="email">email: </label>
+              <input type="email" name="email" class="form__form" required />
+              <label for="message" class="form__form">mensagem: </label>
+              <textarea
+                class="form__form"
+                id="message"
+                rows="4"
+                name="message"
+              ></textarea>
+              <br>
+              <a href=""><button
+                  type="submit"
+                  class="btn--text"
+                >enviar</button></a>
+            </form>
+          </div>
+      </div>
+    </section> 
+
+    {{!-- <section class="section" id="section--5">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description"><!--Not sure yet?--></h2>
+        <h3 class="section__header">What they are saying about HaveToDo.</h3>
+        <hr />
+      </div>
+
+      <div class="slider">
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Best decision</h5>
+            <blockquote class="testimonial__text">
+              I wouldn't be able to work or even manage my full-time job and be
+              a mother and wife if it weren't for HaveToDo.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Sonia Dias</h6>
+              <p class="testimonial__location">São Paulo, Brazil</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">I changed my life</h5>
+            <blockquote class="testimonial__text">
+              I never again had to worry about missing my meetings with friends
+              and family. With HaveToDo I learned to organize my life. I'm very
+              grateful.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Sonito Diasito</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">I made my dream come true</h5>
+            <blockquote class="testimonial__text">
+              I couldn't write my book and blamed the lack of time. With
+              HaveToDo I discovered how to prioritize and in less than six
+              months I finished my first book.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Sonio Dios</h6>
+              <p class="testimonial__location">Madrid, Spain</p>
+            </address>
+          </div>
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section section--sign-up">
+      <div class="section__title">
+        <h3 class="section__header">
+          Don't waste any more time and organize your work and personal life
+          with HaveToDo.
+        </h3>
+      </div>
+      <!-- ITS NOT WORKING!! QUERY SELECTOR?? -->
+      <button class="btn btn--show-modal">Sing Up</button>
+    </section> --}}
+
+<section class="section" id="section--4">
+  <img src="" alt="Logo" class="footer__logo" />
+    <div class="header__title">
+        <h1 class="toda"> toda</h1>
+        <h1 class="cidada">cidadã</h1>
     </div>
-  </div>
-
-  <button class="slider__btn slider__btn--left">&larr;</button>
-  <button class="slider__btn slider__btn--right">&rarr;</button>
-  <div class="dots"></div>
-</div>
-
-
-{{#each posts}}
-  <div class="card mt-2 border-light">
-    <div class="card-body">
-      <h4 class="card-title">{{title}}</h4>
-
-      <p>{{description}}</p>
-      <a href="/post/{{slug}}">
-        <button class="btn btn-dark">Ler mais</button></a>
-
-     <hr>
-      <h6 class="card-subtitle mb-2 text-muted">Categoia: {{category.name}}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">Publicado em: {{category.name}}
-    </div>
-  </div>
-{{else}}
-  <h5>No post</h5>
-{{/each}}
-
-
-<div>
-  <a href="/alltheposts"><button class="btn btn-success mt-4">Ver todas as
-    postagens</button></a>
   <br>
-  <br>
-</div>
+</section>
+    
+
+    <footer class="footer">
+      <p class="footer__copyright">
+        <!-- Keep in touch: -->
+        <a class="footer__link twitter-link" target="_blank" href="#">instagram
+          | facebook | twitter</a>
+      </p>
+    </footer>
+
+    <div class="modal--singup hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        <span class="highlight">Sing Up</span>
+      </h2>
+      <form class="modal__form">
+        <label>First Name</label>
+        <input type="text" />
+        <label>Last Name</label>
+        <input type="text" />
+        <label>Email Address</label>
+        <input type="email" />
+        <button class="btn">Next step &rarr;</button>
+        <button
+          style="color: var(--color-primary)"
+          class="btn btn--change--modal btn--SignUpToChange"
+        >
+          <p style="color: #222">Already signed up?</p>
+          Go to login
+        </button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <div class="modal--login hidden log-in">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        <span class="highlight">Log in</span>
+      </h2>
+      <form class="modal__form">
+        <label>First Name</label>
+        <input type="text" />
+        <label>Last Name</label>
+        <input type="text" />
+        <label>Email Address</label>
+        <input type="email" />
+        <label>Password</label>
+        <input type="password" />
+        <button class="btn">Next step &rarr;</button>
+        <button
+          style="color: var(--color-primary)"
+          class="btn btn--change--modal btn--loginToChange"
+        >
+          <p style="color: #222">Don't have an account?</p>
+          Sing Up
+        </button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- <script src="script.js"></script> -->

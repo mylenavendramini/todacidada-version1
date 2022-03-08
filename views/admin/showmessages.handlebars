@@ -1,16 +1,23 @@
-<h2>Mensagens: </h2>
-<hr />
-
-{{#each messages}}
-  <div class="card mt-4">
-    <div class="card-body">
-
-      <p>Nome: {{name}}</p>
-      <small>Email: {{email}}</small><br />
-      <small>Messagem: {{message}}</small><br />
-    </div>
+<section class="section" id="section--4">
+  <div class="section__line">
+    <h3 class="section__header">
+      {{! Escrever algo. }}
+      <div class="line__horizontal line__horizontal--2"></div>
+    </h3>
   </div>
-{{else}}
-  <p>Não há mensagens ainda.</p>
-{{/each}}
-<br />
+
+  {{#each messages}}
+    <div class="messages__container">
+      <div class="messages__content">
+        <h5 class="operations__header">mensagens: </h5>
+
+        <p>nome: {{name}}</p>
+        <p>email: {{email}}</p>
+        <p>messagem: {{message}}</p>
+      </div>
+    </div>
+  {{else}}
+    <h5>não há mensagens ainda</h5>
+  {{/each}}
+  <br />
+</section>

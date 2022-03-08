@@ -14,8 +14,12 @@ const flash = require("connect-flash");
 require("./models/Post");
 const Post = mongoose.model("posts");
 
+require("./models/Message");
+const Message = mongoose.model("messages");
+
 require("./models/Category");
 const Category = mongoose.model("categories");
+
 require("./models/Student");
 const Student = mongoose.model("students");
 
@@ -88,6 +92,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // If it doenst work, use this:
 // app.use(express.static(path.join("public/css")));
 // app.use(express.static(path.join("public/js")));
+// app.use(express.static(path.join("public/img")));
 
 // Routes
 //main route
@@ -108,21 +113,25 @@ app.use(express.static(path.join(__dirname, "public")));
 //     });
 // });
 
-app.get("/", (req, res) => {
-  Post.find()
-    .lean()
-    .populate("category")
-    .sort({ _id: -1 })
-    .limit(3)
-    .then((posts) => {
-      res.render("index", { posts: posts });
-    })
+// app.get("/", (req, res) => {
+//   Post.find()
+//     .lean()
+//     .populate("category")
+//     .sort({ _id: -1 })
+//     .limit(3)
+//     .then((posts) => {
+//       res.render("index", { posts: posts });
+//     })
 
-    .catch((err) => {
-      req.flash("error_msg", "There was an error");
-      console.log(err);
-      res.redirect("/404");
-    });
+//     .catch((err) => {
+//       req.flash("error_msg", "There was an error");
+//       console.log(err);
+//       res.redirect("/404");
+//     });
+// });
+
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 app.get("/post/:slug", (req, res) => {
@@ -183,6 +192,56 @@ app.get("/categories/:slug", (req, res) => {
       req.flash("error_msg", "There was an error loading the categories");
       res.redirect("/");
     });
+});
+
+app.post("/", (req, res) => {
+  // form validation
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Invalid name" });
+  }
+  if (
+    !req.body.email ||
+    typeof req.body.email == undefined ||
+    req.body.email == null
+  ) {
+    errors.push({ text: "Invalid email" });
+  }
+  if (
+    !req.body.message ||
+    typeof req.body.message == undefined ||
+    req.body.message == null
+  ) {
+    errors.push({ text: "Invalid message" });
+  }
+
+  if (errors.length > 0) {
+    res.render("/", { errors: errors });
+  } else {
+    const newMessage = new Message({
+      // save new Message inside the variable newMessage
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+    });
+    newMessage
+      .save()
+      .then(() => {
+        req.flash("success_msg", "A mensagem foi enviada com sucesso!");
+        res.redirect("/");
+      })
+      .catch((err) => {
+        req.flash(
+          "error_msg",
+          "Houve um erro ao tentar enviar a mensagem. Tente novamente!" + err
+        );
+        res.redirect("/");
+      });
+  }
 });
 
 app.get("/users/courses", (req, res) => {
