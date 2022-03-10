@@ -37,9 +37,10 @@ body {
 
 /* GENERAL ELEMENTS */
 .section {
-  padding: 12rem 3rem;
+  padding: 3rem 3rem;
   /* border-top: 1px solid #ddd; */
   transition: transform 1s, opacity 1s;
+  margin: 0rem auto;
 }
 
 .section--hidden {
@@ -53,7 +54,7 @@ body {
 }
 
 .section__line {
-  margin: 0 auto 8rem auto;
+  margin: auto auto 5rem auto;
 }
 
 .section__description {
@@ -64,7 +65,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.section__ {
+.section__header {
   font-size: 4rem;
   line-height: 1.3;
   font-weight: 500;
@@ -165,6 +166,7 @@ img {
 /* nav and stickly class at the same time */
 .nav.sticky {
   position: fixed;
+  top: 0;
   /* background-color: rgba(255, 255, 255, 0.949); */
   /* background-color: #f3f3f3; */
   background-color: var(--color-primary-lighter-rgba);
@@ -307,7 +309,8 @@ img {
   align-items: center;
   justify-items: center;
   text-align: center;
-  margin-top: 10rem;
+  margin: 10rem auto 0rem auto;
+  padding: 6rem;
 }
 
 h1 {
@@ -358,13 +361,14 @@ h5 {
   grid-column: 2 / 3;
   grid-row: 1 / span 4;
   transform: translateY(-6rem);
+  margin-top: 8rem;
 }
 
 /* DESCRIPTION */
 
 .line__horizontal {
   width: 100%;
-  margin: auto 10rem auto auto;
+  margin: 0rem;
   padding: 0;
 }
 
@@ -387,7 +391,7 @@ h5 {
   column-gap: 3rem;
   row-gap: 20rem;
   margin: auto 6rem;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 @media only screen and (max-width: 968px) {
@@ -427,7 +431,7 @@ h5 {
   padding: 2.5rem 7rem 6.5rem 7rem;
   text-align: center;
   margin-bottom: 5rem;
-  margin-top: 5rem;
+  margin-top: 7rem;
 }
 
 .description__icon {
@@ -462,7 +466,9 @@ hr {
 /* OPERATIONS */
 .operations {
   max-width: 100rem;
-  margin: 12rem auto 0 auto;
+  margin: auto;
+  /* margin: auto 6rem; */
+  /* padding: 3rem; */
   background-color: var(--color-tertiary);
 }
 
@@ -525,8 +531,9 @@ hr {
 
 /* NEW!!!!!!!!!!!!!! */
 .operations--img {
-  width: 100%;
+  width: 20%;
   height: auto;
+  justify-self: center;
 }
 
 .operations__header {
@@ -580,9 +587,10 @@ hr {
 
 .form__card {
   max-width: 100rem;
-  margin: 12rem auto 0 auto;
-  padding: 2.5rem 7rem 6.5rem 7rem;
-  /* margin: auto 19rem; */
+  margin: 6rem auto 6rem auto;
+  padding: 3rem 7rem 3rem 7rem;
+  /* margin: auto 6rem; */
+  /* padding: 3rem; */
   background-color: var(--color-secondary-darker);
 }
 
@@ -832,6 +840,7 @@ hr {
   display: flex;
   justify-content: center;
   margin-bottom: 5rem;
+  width: 105%;
 }
 
 .footer__item {
@@ -856,6 +865,9 @@ hr {
   grid-column: 2 / 3;
   grid-row: 1 / span 4;
   transform: translateY(-6rem);
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .footer__copyright {
