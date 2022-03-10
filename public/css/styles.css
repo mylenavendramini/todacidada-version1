@@ -637,7 +637,7 @@ hr {
 
 @media only screen and (max-width: 968px) {
   .form__form {
-    max-width: 50%;
+    width: 80%;
   }
 }
 
