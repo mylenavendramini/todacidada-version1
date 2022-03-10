@@ -116,7 +116,7 @@ router.post("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("users/login");
+  res.render("login");
 });
 
 // authentication route
@@ -124,7 +124,7 @@ router.post("/login", (req, res, next) => {
   //authenticate() is the function that I will always use to authencicate something
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/users/login",
+    failureRedirect: "/login",
     failureFlash: true,
   })(req, res, next);
 });
