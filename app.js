@@ -176,19 +176,19 @@ app.post("/", (req, res) => {
   }
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
-});
+// app.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
-// authentication route
-app.post("/login", (req, res, next) => {
-  //authenticate() is the function that I will always use to authencicate something
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })(req, res, next);
-});
+// // authentication route
+// app.post("/login", (req, res, next) => {
+//   //authenticate() is the function that I will always use to authencicate something
+//   passport.authenticate("local", {
+//     successRedirect: "/",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })(req, res, next);
+// });
 
 app.get("/mensagens", isAdmin, (req, res) => {
   Message.find()
