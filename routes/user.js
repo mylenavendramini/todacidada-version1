@@ -115,19 +115,19 @@ router.post("/register", (req, res) => {
   }
 });
 
-router.get("/login", (req, res) => {
-  res.render("login");
-});
+// router.get("/login", (req, res) => {
+//   res.render("login");
+// });
 
-// authentication route
-router.post("/login", (req, res, next) => {
-  //authenticate() is the function that I will always use to authencicate something
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })(req, res, next);
-});
+// // authentication route
+// router.post("/login", (req, res, next) => {
+//   //authenticate() is the function that I will always use to authencicate something
+//   passport.authenticate("local", {
+//     successRedirect: "/",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })(req, res, next);
+// });
 
 router.get("/logout", (req, res) => {
   req.logOut();
