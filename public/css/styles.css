@@ -364,6 +364,16 @@ h5 {
   margin-top: 8rem;
 }
 
+@media only screen and (max-width: 968px) {
+  .toda--img--top {
+    width: 100%;
+    grid-column: 2 / 3;
+    grid-row: 1 / span 4;
+    transform: translateY(-6rem);
+    margin-top: 8rem;
+  }
+}
+
 /* DESCRIPTION */
 
 .line__horizontal {
@@ -627,7 +637,7 @@ hr {
 
 @media only screen and (max-width: 968px) {
   .form__form {
-    width: 30rem;
+    max-width: 30rem;
   }
 }
 
