@@ -4,7 +4,7 @@ module.exports = {
       return next();
     }
 
-    req.flash("error_msg", "You must be admin to enter here.");
+    req.flash("error_msg", "Você deve ser um administrador para entrar aqui.");
     res.redirect("/");
   },
 };

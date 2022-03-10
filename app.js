@@ -14,6 +14,8 @@ const flash = require("connect-flash");
 require("./models/Message");
 const Message = mongoose.model("messages");
 
+const { isAdmin } = require("./helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
+
 const users = require("./routes/user");
 const passport = require("passport");
 require("./config/auth")(passport);
@@ -172,6 +174,48 @@ app.post("/", (req, res) => {
         res.redirect("/");
       });
   }
+});
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// authentication route
+app.post("/login", (req, res, next) => {
+  //authenticate() is the function that I will always use to authencicate something
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })(req, res, next);
+});
+
+app.get("/mensagens", isAdmin, (req, res) => {
+  Message.find()
+    .sort({ _id: -1 })
+    .then((messages) => {
+      res.render("showmessages", {
+        messages: messages.map((messages) => messages.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao mostrar as mensagens");
+      res.redirect("/");
+    });
+});
+
+app.get("/mensagens", isAdmin, (req, res) => {
+  Message.find()
+    .lean()
+    // the name that I gave in the variable const Post = new Schema in Post.js
+    .sort({ _id: -1 })
+    .then((messages) => {
+      res.render("showmessages", { messages: messages });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao listar as mensagens." + err);
+      res.redirect("/");
+    });
 });
 
 app.get("/404", (req, res) => {

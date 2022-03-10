@@ -20,7 +20,7 @@ module.exports = function (passport) {
           .then((user) => {
             if (!user) {
               return done(null, false, {
-                message: "This account doesn't exist",
+                message: "Essa conta não existe.",
               });
               // done() is a callback function
             } else {
@@ -28,13 +28,13 @@ module.exports = function (passport) {
                 if (match) {
                   return done(null, user);
                 } else {
-                  return done(null, false, { message: "Wrong password" });
+                  return done(null, false, { message: "Senha errada." });
                 }
               });
             }
           })
           .catch((err) => {
-            req.flash("error_msg", "There was an error");
+            req.flash("error_msg", "Houve um erro" + err);
           });
         // email: email is to find the user that has the same email that wass passed into the authentication
       }
