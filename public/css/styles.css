@@ -408,6 +408,7 @@ h5 {
   .description {
     grid-template-columns: auto auto;
     gap: 2rem;
+    margin: auto;
   }
 }
 
@@ -637,7 +638,7 @@ hr {
 
 @media only screen and (max-width: 968px) {
   .form__form {
-    width: 80%;
+    width: 100%;
   }
 }
 
@@ -878,6 +879,12 @@ hr {
   display: block;
   margin: 0 auto;
   margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 968px) {
+  .toda--img--footer {
+    width: 50%;
+  }
 }
 
 .footer__copyright {
