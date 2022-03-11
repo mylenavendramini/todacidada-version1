@@ -222,7 +222,7 @@ app.post("/register", (req, res) => {
     errors.push({ text: "As senhas não são a mesma. Tente novamente." });
   }
   if (errors.length > 0) {
-    res.render("users/register", { errors: errors });
+    res.render("register", { errors: errors });
   } else {
     // verify if the email that the user is trying to register already doesnt exist in the database
     User.findOne({ email: req.body.email })
