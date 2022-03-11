@@ -13,6 +13,8 @@ const flash = require("connect-flash");
 
 require("./models/Message");
 const Message = mongoose.model("messages");
+require("./models/User");
+const User = mongoose.model("users");
 
 const { isAdmin } = require("./helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
 
@@ -172,6 +174,109 @@ app.post("/", (req, res) => {
           "error_msg",
           "Houve um erro ao tentar enviar a mensagem. Tente novamente!" + err
         );
+        res.redirect("/");
+      });
+  }
+});
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+// validate the register.handlebars form
+app.post("/register", (req, res) => {
+  // form validation
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Nome inválido" });
+  }
+  if (
+    !req.body.email ||
+    typeof req.body.email == undefined ||
+    req.body.email == null
+  ) {
+    errors.push({ text: "E-mail inválido" });
+  }
+
+  if (
+    !req.body.password ||
+    typeof req.body.password == undefined ||
+    req.body.password == null
+  ) {
+    errors.push({ text: "Senha inválida" });
+  }
+
+  // if (req.body.name.length < 2) {
+  //   errors.push({ text: "Category name is too short" });
+  // }
+
+  if (req.body.password.length < 8) {
+    errors.push({ text: "A senha tem que ter ao menos 8 caracteres" });
+  }
+
+  if (req.body.password != req.body.password2) {
+    errors.push({ text: "As senhas não são a mesma. Tente novamente." });
+  }
+  if (errors.length > 0) {
+    res.render("users/register", { errors: errors });
+  } else {
+    // verify if the email that the user is trying to register already doesnt exist in the database
+    User.findOne({ email: req.body.email })
+      .lean()
+      .then((user) => {
+        if (user) {
+          // here, it means that theres already an user with the email (req.body.email) register already
+          req.flash(
+            "error_msg",
+            "Já tem uma conta com esse e-mail no sistema."
+          );
+          res.redirect("/register");
+        } else {
+          // register the user in the database
+          const newUser = new User({
+            // save new User inside the variable newUser
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            // I dont need to pass isAdmin becasue the defalut value is 0 already
+            // isAdmin: 1,
+          });
+          // I cant only save here, I need to hash it:
+
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) {
+                req.flash(
+                  "err_msg",
+                  "Houve um erro ao salvar o usuário." + err
+                );
+                res.redirect("/");
+              }
+              newUser.password = hash;
+              // Im getting password that is inside newUser and saying that it = the hash that was created and was passed in the hash parameter (err, hash)
+              newUser
+                .save()
+                .then(() => {
+                  req.flash("success_msg", "Usuário criado com sucesso!");
+                  res.redirect("/");
+                })
+                .catch((err) => {
+                  req.flash(
+                    "error_msg",
+                    "Houve um erro ao criar o usuário. Tente novamente." + err
+                  );
+                  res.redirect("/users/register");
+                });
+            });
+          });
+        }
+      })
+      .catch((err) => {
+        req.flash("error_msg", "Houve um erro interno.");
         res.redirect("/");
       });
   }
