@@ -13,7 +13,7 @@ const User = new Schema({
 
   isAdmin: {
     type: Number,
-    default: 1,
+    default: 0,
     // when is 0 it means is not admin!
   },
 
