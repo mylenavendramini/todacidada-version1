@@ -406,7 +406,7 @@ h5 {
 
 @media only screen and (max-width: 968px) {
   .description {
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     gap: 2rem;
     margin: auto;
   }
