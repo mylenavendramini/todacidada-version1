@@ -17,6 +17,7 @@ const Message = mongoose.model("messages");
 const { isAdmin } = require("./helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
 
 const users = require("./routes/user");
+const bcrypt = require("bcryptjs");
 const passport = require("passport");
 require("./config/auth")(passport);
 const db = require("./db");
