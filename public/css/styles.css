@@ -387,7 +387,7 @@ h5 {
 }
 
 .line__horizontal--2 {
-  border-bottom: 8px solid var(--color-tertiary-darker);
+  border-bottom: 8px solid var(--color-quartenary-darker);
 }
 
 .line__horizontal--3 {
@@ -404,11 +404,53 @@ h5 {
   padding: 2rem;
 }
 
+.mobile {
+  display: none;
+  /* opacity: 0; */
+}
+
 @media only screen and (max-width: 968px) {
+  .mobile {
+    display: block;
+    /* grid-template-rows: 1fr 1fr; */
+  }
   .description {
-    grid-template-columns: auto;
-    gap: 2rem;
-    margin: auto;
+    display: none;
+    opacity: 0;
+  }
+
+  .mobile__feature {
+    /* align-self: center; */
+    justify-self: center;
+    width: 100%;
+    height: auto;
+    background-color: var(--color-primary-darker);
+  }
+
+  .mobile__header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile p {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    text-align: justify;
+    font-size: 2rem;
+    font-family: "Montserrat";
+    color: var(--color-primary-darker);
+    padding: 3rem;
+  }
+
+  .mobile h5 {
+    font-size: 2rem;
+    color: white;
+    font-family: "Montserrat";
+    padding: 2.5rem 7rem 6.5rem 7rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 7rem;
   }
 }
 
@@ -480,7 +522,7 @@ hr {
   margin: auto;
   /* margin: auto 6rem; */
   /* padding: 3rem; */
-  background-color: var(--color-tertiary);
+  background-color: var(--color-quaternary);
 }
 
 .operations button {
@@ -504,20 +546,20 @@ hr {
 }
 
 .operations__tab--1 {
-  background-color: var(--color-tertiary-darker);
+  background-color: var(--color-quaternary-darker);
 }
 
 .operations__tab--1:hover {
-  background-color: var(--color-tertiary-lighter);
+  background-color: var(--color-quaternary-lighter);
 }
 
 .operations__tab--3 {
-  background-color: var(--color-tertiary);
+  background-color: var(--color-quaternary);
   margin: 0;
 }
 
 .operations__tab--3:hover {
-  background-color: var(--color-tertiary-darker);
+  background-color: var(--color-quaternary-darker);
 }
 
 .operations__tab--active {
@@ -591,7 +633,7 @@ hr {
   fill: var(--color-primary);
 }
 .operations__icon--3 svg {
-  fill: var(--color-tertiary);
+  fill: var(--color-quaternary);
 }
 
 /* FORM */
