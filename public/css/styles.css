@@ -575,11 +575,12 @@ hr {
 }
 
 .operations__content--active {
-  display: grid;
-  grid-column: 1;
+  display: block;
+  /* display: grid; */
+  /* grid-column: 1; */
   /* grid-template-columns: 7rem 1fr ; */
-  column-gap: 3rem;
-  row-gap: 0.5rem;
+  /* column-gap: 3rem;
+  row-gap: 0.5rem; */
 }
 
 /* NEW!!!!!!!!!!!!!! */
@@ -611,7 +612,9 @@ hr {
 }
 
 .operations__content p {
-  grid-column: 2;
+  /* grid-column: 2; */
+
+  text-align: justify;
 }
 
 .operations__icon--1 {
