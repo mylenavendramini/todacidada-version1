@@ -15,6 +15,8 @@ require("./models/Message");
 const Message = mongoose.model("messages");
 require("./models/User");
 const User = mongoose.model("users");
+require("./models/Course");
+const Course = mongoose.model("courses");
 
 const { isAdmin } = require("./helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
 
@@ -323,6 +325,40 @@ app.get("/mensagens", isAdmin, (req, res) => {
       res.redirect("/");
     });
 });
+
+app.get("/courses-index", (req, res) => {
+  res.render("courses-index");
+});
+
+// app.get("/courses", (req, res) => {
+//   Course.find()
+//     .lean()
+//     .then((courses) => {
+//       res.render("courses", { courses: courses });
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro ao listar os cursos.");
+//       res.redirect("/");
+//     });
+// });
+
+// app.get("/courses/:slug", (req, res) => {
+//   Course.findOne({ slug: req.params.slug })
+//     .lean()
+//     .then((course) => {
+//       if (course) {
+//         res.render("courses-index", { course: course });
+//         //post: post is to pass the data of the post it found
+//       } else {
+//         req.flash("error_msg", "Esse curso não existe.");
+//         res.redirect("/");
+//       }
+//     })
+//     .catch((err) => {
+//       req.flash("error_msg", "Houve um erro" + err);
+//       res.redirect("/");
+//     });
+// });
 
 app.get("/404", (req, res) => {
   res.send("Error 404");

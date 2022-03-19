@@ -1,0 +1,28 @@
+
+    <section class="section" id="section--2">
+      <div class="section__line">
+        <h5 class="section__header">
+          Nossos cursos: 
+          {{!-- <div class="line__horizontal line__horizontal--1"></div> --}}
+        </h5>
+      </div>
+      <div class="description">
+        {{#each courses}}
+         <div class="description__feature">
+            {{!-- <h5 class="description__header">{{name}}</b></h5> --}}
+            <a class="description__header" href="/courses/{{slug}}"><h5>{{name}}</h5></a>
+          </div>
+        <div class="">
+          <p>
+            {{description}}
+          </p>
+          {{!-- <a class="btn--text" href="/courses/{{slug}}/">Saiba mais</a> --}}
+        </div>  
+         
+        {{else}}
+        {{/each}}
+
+        </div>
+
+    </section>
+</div> 

@@ -104,12 +104,17 @@
 
       <div class="operations">
         <div class="operations__tab-container">
-          <button
+          {{!-- <button
             class="btn operations__tab operations__tab--1 operations__tab--active"
             data-tab="1"
           >
             CURSOS
-          </button>
+          </button> --}}
+          <a href="/courses-index"><button
+                  type="submit"
+                  class="btn operations__tab operations__tab--1 operations__tab--active"
+                  data-tab="1"
+                >CURSO</button></a>
           {{! <button class="btn operations__tab operations__tab--2" data-tab="2">
             <span>02</span>Curso
           </button>
@@ -138,9 +143,14 @@
             A contratação do curso pode ser em formato integral - com todos os módulos - ou considerando somente sua área de especialização, adquirindo o módulo introdutório + o de sua área específica.
             <br />
             <br />
-            <button class="btn--text">
-              Inscreva-se já
-            </button>
+            {{!-- <button class="btn--text">
+              Inscreva-se
+            </button> --}}
+            <a href="/courses-index"><button
+                  type="submit"
+                  class="btn--text"
+                  data-tab="1"
+                >Saiba mais</button></a>
           </p>
         </div>
       </div>
