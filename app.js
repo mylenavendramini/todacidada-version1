@@ -326,8 +326,8 @@ app.get("/mensagens", isAdmin, (req, res) => {
     });
 });
 
-app.get("/courses-index", (req, res) => {
-  res.render("courses-index");
+app.get("/courses-todacidada", (req, res) => {
+  res.render("courses-todacidada");
 });
 
 // app.get("/courses", (req, res) => {
