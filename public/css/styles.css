@@ -143,6 +143,10 @@ body {
   transition: all 0.3s;
 }
 
+.btn--text--purple {
+  color: var(--color-tertiary-darker);
+}
+
 .btn--text--back {
   display: inline-block;
   background: none;
@@ -710,8 +714,16 @@ hr {
   height: auto;
   margin: auto;
   /* background-color: var(--color-primary-darker); */
-  background-color: var(--color-tertiary-darker);
+  /* background-color: var(--color-tertiary-darker); */
   /* padding: 2.5rem 7rem 6.5rem 7rem; */
+}
+
+.course__feature--color {
+  background-color: var(--color-tertiary-darker);
+}
+
+.course__feature--transparent {
+  background-color: #fff;
 }
 
 /* .course__header {
