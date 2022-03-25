@@ -438,7 +438,7 @@ h5 {
   column-gap: 3rem;
   row-gap: 20rem;
   margin: auto 6rem;
-  padding: 2rem;
+  padding: 2rem 0rem;
 }
 
 .mobile {
@@ -517,16 +517,20 @@ h5 {
   font-family: "Montserrat";
   color: var(--color-primary-darker);
   padding: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .description h5 {
   font-size: 2rem;
   color: white;
   font-family: "Montserrat";
-  padding: 2.5rem 7rem 6.5rem 7rem;
+  padding: 2.5rem 7rem 2.5rem 7rem;
   text-align: center;
-  margin-bottom: 5rem;
-  margin-top: 7rem;
+  /* margin-bottom: 5rem; */
+  margin-top: 12rem;
+  /* margin-bottom: 2rem;
+  margin-top: 2rem; */
 }
 
 .description__icon {
