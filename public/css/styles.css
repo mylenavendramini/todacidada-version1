@@ -722,9 +722,9 @@ hr {
   background-color: var(--color-tertiary-darker);
 }
 
-/* .course__feature--transparent {
+.course__feature--transparent {
   background-color: white;
-} */
+}
 
 /* .course__header {
   justify-self: center;
