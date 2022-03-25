@@ -326,8 +326,8 @@ app.get("/mensagens", isAdmin, (req, res) => {
     });
 });
 
-app.get("/courses-todacidada", (req, res) => {
-  res.render("courses-todacidada");
+app.get("/cursos-advocaciafeminista", (req, res) => {
+  res.render("cursos-advocaciafeminista");
 });
 
 // app.get("/courses", (req, res) => {
