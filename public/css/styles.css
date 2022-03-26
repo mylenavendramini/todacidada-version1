@@ -699,12 +699,12 @@ hr {
   color: var(--color-quaternary-darker);
 }
 
-@media only screen and (max-width: 968px) {
+/* @media only screen and (max-width: 968px) {
   .course {
     grid-template-columns: auto auto;
     gap: 2rem;
   }
-}
+} */
 
 .course__img {
   width: 100%;
@@ -812,9 +812,9 @@ hr {
   text-align: justify;
 }
 
-/* .courses--mobile {
+.courses--mobile {
   display: none;
-} */
+}
 
 @media only screen and (max-width: 968px) {
   .courses--mobile {
