@@ -25,6 +25,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -199,9 +200,11 @@ img {
   height: 8rem;
   width: 105%;
   padding: 0 6rem;
-  z-index: 100;
+  /* z-index: 100; */
   background-color: var(--color-primary-lighter);
   color: var(--color-primary-darker);
+  position: sticky;
+  top: 0;
 }
 
 /* nav and stickly class at the same time */
