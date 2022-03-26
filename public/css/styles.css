@@ -812,9 +812,9 @@ hr {
   text-align: justify;
 }
 
-.courses--mobile {
+/* .courses--mobile {
   display: none;
-}
+} */
 
 @media only screen and (max-width: 968px) {
   .courses--mobile {
