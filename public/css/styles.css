@@ -200,7 +200,7 @@ img {
   height: 8rem;
   width: 105%;
   padding: 0 6rem;
-  /* z-index: 100; */
+  z-index: 100;
   background-color: var(--color-primary-lighter);
   color: var(--color-primary-darker);
   position: sticky;
@@ -211,8 +211,7 @@ img {
 .nav.sticky {
   position: fixed;
   top: 0;
-  /* background-color: rgba(255, 255, 255, 0.949); */
-  /* background-color: #f3f3f3; */
+
   background-color: var(--color-primary-lighter-rgba);
 }
 
@@ -280,6 +279,7 @@ img {
   .nav {
     justify-content: space-between;
     z-index: 1000;
+    position: sticky;
   }
   .nav.sticky {
     position: fixed;
@@ -680,7 +680,7 @@ hr {
 
 @media only screen and (max-width: 968px) {
   .advocacia-curso {
-    width: 100%;
+    width: 120%;
     grid-column: 2 / 3;
     grid-row: 1 / span 4;
     transform: translateY(-6rem);
@@ -810,6 +810,22 @@ hr {
   /* grid-column: 2; */
 
   text-align: justify;
+}
+
+.courses--mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 968px) {
+  .courses--mobile {
+    display: block;
+    /* grid-template-rows: 1fr 1fr; */
+  }
+
+  .courses {
+    display: none;
+    opacity: 0;
+  }
 }
 
 /* OPERATIONS */
@@ -1313,6 +1329,8 @@ hr {
   backdrop-filter: blur(4px);
   z-index: 100;
   transition: all 0.5s;
+  /* display: none;
+  cursor: pointer; */
 }
 
 .modal__header {
