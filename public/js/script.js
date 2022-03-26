@@ -28,7 +28,7 @@ hamburger.addEventListener("click", mobileMenu);
 function mobileMenu() {
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
-  overlay.classList.toggle("hidden");
+  // overlay.classList.toggle("hidden");
 }
 
 // Closing the hamburger when click some link
@@ -37,7 +37,7 @@ navLink.forEach((n) => n.addEventListener("click", closeHamburger));
 function closeHamburger() {
   hamburger.classList.remove("active");
   navMenu.classList.remove("active");
-  overlay.classList.add("hidden");
+  // overlay.classList.add("hidden");
 }
 
 // Closing the hamburger when click outside

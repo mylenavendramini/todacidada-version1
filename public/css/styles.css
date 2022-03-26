@@ -700,39 +700,9 @@ hr {
 }
 
 @media only screen and (max-width: 968px) {
-  /* .course {
-    margin: auto;
-    padding: 0rem;
-  } */
-
-  .course__feature {
-    /* align-self: center; */
-    justify-self: center;
-    width: 100%;
-    height: auto;
-    margin: auto;
-  }
-
-  .course p {
-    align-self: center;
-    justify-self: center;
-    width: 100%;
-    /* text-align: center; */
-    /* arrumar o botão!!! */
-    font-size: 2rem;
-    font-family: "Lato";
-    /* color: var(--color-primary-darker); */
-    /* color: var(--color-quartenary); */
-    padding: 0rem;
-  }
-
-  .course h5 {
-    /* font-size: 2rem; */
-    color: white;
-    /* font-family: "Outfit", sans-serif; */
-    padding: 0rem;
-    text-align: center;
-    margin: auto;
+  .course {
+    margin: 0;
+    padding: 0;
   }
 }
 
