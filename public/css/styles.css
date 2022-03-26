@@ -813,7 +813,7 @@ hr {
 }
 
 .courses--mobile {
-  /* display: none; */
+  display: none;
 }
 
 @media only screen and (max-width: 968px) {
