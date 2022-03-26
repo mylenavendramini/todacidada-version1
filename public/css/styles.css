@@ -765,6 +765,22 @@ hr {
   background-color: var(--color-tertiary-darker);
 }
 
+.courses--mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 968px) {
+  .courses--mobile {
+    display: block;
+    /* grid-template-rows: 1fr 1fr; */
+  }
+
+  .courses {
+    display: none;
+    opacity: 0;
+  }
+}
+
 .courses button {
   color: white;
 }
@@ -810,22 +826,6 @@ hr {
   /* grid-column: 2; */
 
   text-align: justify;
-}
-
-.courses--mobile {
-  display: none;
-}
-
-@media only screen and (max-width: 968px) {
-  .courses--mobile {
-    display: block;
-    /* grid-template-rows: 1fr 1fr; */
-  }
-
-  .courses {
-    display: none;
-    opacity: 0;
-  }
 }
 
 /* OPERATIONS */
