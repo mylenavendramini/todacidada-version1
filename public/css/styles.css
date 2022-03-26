@@ -699,12 +699,12 @@ hr {
   color: var(--color-quaternary-darker);
 }
 
-/* @media only screen and (max-width: 968px) {
+@media only screen and (max-width: 968px) {
   .course {
-    grid-template-columns: auto auto;
-    gap: 2rem;
+    margin: auto;
+    padding: 0rem;
   }
-} */
+}
 
 .course__img {
   width: 100%;
