@@ -37,7 +37,7 @@ navLink.forEach((n) => n.addEventListener("click", closeHamburger));
 function closeHamburger() {
   hamburger.classList.remove("active");
   navMenu.classList.remove("active");
-  overlay.classList.add("hidden");
+  // overlay.classList.add("hidden");
 }
 
 // Closing the hamburger when click outside
