@@ -711,9 +711,6 @@ hr {
     width: 100%;
     height: auto;
     margin: auto;
-    /* background-color: var(--color-primary-darker); */
-    /* background-color: var(--color-tertiary-darker); */
-    /* padding: 2.5rem 7rem 6.5rem 7rem; */
   }
 
   .course p {
@@ -726,14 +723,14 @@ hr {
     font-family: "Lato";
     /* color: var(--color-primary-darker); */
     /* color: var(--color-quartenary); */
-    padding: 3rem;
+    padding: 0rem;
   }
-  
+
   .course h5 {
     /* font-size: 2rem; */
     color: white;
     /* font-family: "Outfit", sans-serif; */
-    padding: 3rem;
+    padding: 0rem;
     text-align: center;
     margin: auto;
   }
