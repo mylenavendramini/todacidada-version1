@@ -32,25 +32,25 @@ function mobileMenu() {
 }
 
 // Closing the hamburger when click some link
-// navLink.forEach((n) => n.addEventListener("click", closeHamburger));
+navLink.forEach((n) => n.addEventListener("click", closeHamburger));
 
-// function closeHamburger() {
-//   hamburger.classList.remove("active");
-//   navMenu.classList.remove("active");
-//   // overlay.classList.add("hidden");
-// }
+function closeHamburger() {
+  hamburger.classList.remove("active");
+  navMenu.classList.remove("active");
+  // overlay.classList.add("hidden");
+}
 
-// // Closing the hamburger when click outside
+// Closing the hamburger when click outside
 
-// overlay.addEventListener("click", closeHamburger);
+overlay.addEventListener("click", closeHamburger);
 
-// // Closing the hamburger when button scape
+// Closing the hamburger when button scape
 
-// document.addEventListener("keydown", function (e) {
-//   if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
-//     closeHamburger();
-//   }
-// });
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+    closeHamburger();
+  }
+});
 
 ///////////////////////////////////////
 // Button scrolling
