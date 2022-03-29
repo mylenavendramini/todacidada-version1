@@ -734,6 +734,10 @@ hr {
   background-color: white;
 }
 
+.course__feature--subscribe {
+  background-color: var(--color-primary-darker);
+}
+
 /* .course__header {
   justify-self: center;
   justify-content: center;
