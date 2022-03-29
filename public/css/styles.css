@@ -859,6 +859,7 @@ hr {
 .operations {
   max-width: 100rem;
   margin: auto;
+  /* padding: 2rem 0rem; */
   /* margin: auto 6rem; */
   /* padding: 3rem; */
   /* background-color: var(--color-quaternary); */
