@@ -752,6 +752,16 @@ hr {
   margin: 3rem;
 }
 
+@media only screen and (max-width: 968px) {
+  .course--icon {
+    grid-template-columns: auto;
+  }
+  .course--icon img {
+    justify-self: center;
+    margin: auto;
+  }
+}
+
 .course p {
   align-self: center;
   justify-self: center;
