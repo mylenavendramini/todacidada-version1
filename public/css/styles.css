@@ -758,7 +758,7 @@ hr {
   }
   .course--icon img {
     justify-self: center;
-    /* margin: auto; */
+    margin: auto;
   }
 }
 
