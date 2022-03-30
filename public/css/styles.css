@@ -842,8 +842,17 @@ hr {
   padding: 2.5rem 7rem 6.5rem 7rem;
 }
 
+.courses__content img {
+  padding: 4rem 3rem 0rem 3rem;
+}
+
 .courses__content--active {
   display: block;
+  /* display: grid;
+  grid-column: 1 / span 2;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 3rem;
+  row-gap: 0rem; */
 }
 
 .courses__header {
