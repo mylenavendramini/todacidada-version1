@@ -652,7 +652,7 @@ hr {
   text-align: justify;
   font-size: 2rem;
   font-family: "Montserrat";
-  color: var(--color-tertiary-darker);
+  color: var(--color-tertiary-lighter);
   padding: 3rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
