@@ -1,0 +1,22 @@
+<section class="section" id="section--4">
+  <div class="section__line">
+    <h3 class="section__header">
+      {{! Escrever algo. }}
+      {{! <div class="line__horizontal line__horizontal--2"></div> }}
+    </h3>
+  </div>
+
+  {{#each cupoms}}
+    <div class="messages__container">
+      <div class="messages__content">
+        <h5 class="operations__header">e-mails: </h5>
+
+        <p>nome: {{name}}</p>
+        <p>email: {{email}}</p>
+      </div>
+    </div>
+  {{else}}
+    <h5 class="toda">não há e-mails cadastrados ainda</h5>
+  {{/each}}
+  <br />
+</section>

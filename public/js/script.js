@@ -3,6 +3,8 @@
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav__links");
 const navLink = document.querySelectorAll(".nav__link");
+const getCupom = document.querySelector(".get--cupom");
+const cupom = document.querySelector(".cupom");
 const modalLogin = document.querySelector(".modal--login");
 const modalSingUp = document.querySelector(".modal--singup");
 const overlay = document.querySelector(".overlay");
@@ -52,6 +54,26 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+///////////////////////////////////////
+
+// Cupom discont
+
+// Open hamburger:
+
+getCupom.addEventListener("click", showCupom);
+
+function showCupom() {
+  cupom.classList.remove("hidden");
+}
+
+// // Closing the cupom when click some link
+// navLink.forEach((n) => n.addEventListener("click", closecupom));
+
+// function closecupom() {
+//   cupom.classList.remove("active");
+//   navMenu.classList.remove("active");
+//   // overlay.classList.add("hidden");
+// }
 ///////////////////////////////////////
 // Button scrolling
 

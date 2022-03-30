@@ -368,19 +368,11 @@ h1 {
   font-family: "Outfit", sans-serif;
 }
 
-h3 {
-  font-size: 2rem;
-  /* font-weight: 200; */
-}
-
-h4 {
-  font-size: 2rem;
-  /* font-weight: 200; */
-  font-family: "Outfit", sans-serif;
-}
-
+h3,
+h4,
 h5 {
   font-size: 2rem;
+  /* font-weight: 200; */
 }
 
 .toda {
@@ -1044,6 +1036,17 @@ hr {
   align-self: center;
   color: white;
 }
+.form__card h4 {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  align-self: center;
+  color: white;
+}
+
+.form__card p {
+  font-size: 1.5rem;
+}
 
 .form__card button {
   color: white;
@@ -1088,6 +1091,11 @@ hr {
   padding: 2rem 2rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
+}
+
+.cupom {
+  /* margin-left: 4rem; */
+  display: none;
 }
 
 /* MESSAGES */

@@ -17,6 +17,8 @@ require("./models/User");
 const User = mongoose.model("users");
 require("./models/Course");
 const Course = mongoose.model("courses");
+require("./models/Cupom");
+const Cupom = mongoose.model("cupoms");
 
 const { isAdmin } = require("./helpers/isAdmin"); // inside the isAdmin.js, I only want to take the function isAdmin, so I use {isAdmin}
 
@@ -139,21 +141,21 @@ app.post("/", (req, res) => {
     typeof req.body.name == undefined ||
     req.body.name == null
   ) {
-    errors.push({ text: "Invalid name" });
+    errors.push({ text: "Nome inválido" });
   }
   if (
     !req.body.email ||
     typeof req.body.email == undefined ||
     req.body.email == null
   ) {
-    errors.push({ text: "Invalid email" });
+    errors.push({ text: "Email inválido" });
   }
   if (
     !req.body.message ||
     typeof req.body.message == undefined ||
     req.body.message == null
   ) {
-    errors.push({ text: "Invalid message" });
+    errors.push({ text: "Mensagem inválida" });
   }
 
   if (errors.length > 0) {
@@ -328,6 +330,76 @@ app.get("/mensagens", isAdmin, (req, res) => {
 
 app.get("/cursos-advocaciafeminista", (req, res) => {
   res.render("cursos-advocaciafeminista");
+});
+
+app.post("/cursos-advocaciafeminista", (req, res) => {
+  // form validation
+  const errors = [];
+  if (
+    !req.body.name ||
+    typeof req.body.name == undefined ||
+    req.body.name == null
+  ) {
+    errors.push({ text: "Nome inválido" });
+  }
+  if (
+    !req.body.email ||
+    typeof req.body.email == undefined ||
+    req.body.email == null
+  ) {
+    errors.push({ text: "Email inválido" });
+  }
+
+  if (errors.length > 0) {
+    res.render("/cursos-advocaciafeminista", { errors: errors });
+  } else {
+    const newCupom = new Cupom({
+      // save new cupom inside the variable newcupom
+      name: req.body.name,
+      email: req.body.email,
+    });
+    newCupom
+      .save()
+      .then(() => {
+        req.flash("success_msg", "Cupom aceito");
+        res.redirect("/cursos-advocaciafeminista");
+      })
+      .catch((err) => {
+        req.flash(
+          "error_msg",
+          "Houve um erro ao tentar ganhar o desconto. Tente novamente!" + err
+        );
+        res.redirect("/cursos-advocaciafeminista");
+      });
+  }
+});
+
+app.get("/emails", isAdmin, (req, res) => {
+  Cupom.find()
+    .sort({ _id: -1 })
+    .then((emails) => {
+      res.render("showemails", {
+        emails: emails.map((emails) => emails.toJSON()),
+      });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao mostrar os e-mails cadastrados");
+      res.redirect("/cursos-advocaciafeminista");
+    });
+});
+
+app.get("/emails", isAdmin, (req, res) => {
+  Cupom.find()
+    .lean()
+    // the name that I gave in the variable const Post = new Schema in Post.js
+    .sort({ _id: -1 })
+    .then((emails) => {
+      res.render("showemails", { emails: emails });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao listar os e-mails." + err);
+      res.redirect("/cursos-advocaciafeminista");
+    });
 });
 
 // app.get("/courses", (req, res) => {
