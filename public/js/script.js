@@ -58,13 +58,11 @@ document.addEventListener("keydown", function (e) {
 
 // Cupom discont
 
-// Open hamburger:
+// getCupom.addEventListener("click", showCupom);
 
-getCupom.addEventListener("click", showCupom);
-
-function showCupom() {
-  cupom.classList.remove("hidden");
-}
+// function showCupom() {
+//   cupom.classList.remove("hidden");
+// }
 
 // // Closing the cupom when click some link
 // navLink.forEach((n) => n.addEventListener("click", closecupom));

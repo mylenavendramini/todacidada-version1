@@ -1020,12 +1020,23 @@ hr {
 /* FORM */
 
 .form__card {
+  /* max-width: 100rem; */
+  /* margin: 6rem auto 6rem auto; */
+  padding: 3rem 7rem 3rem 7rem;
+}
+
+.form__card--blue {
   max-width: 100rem;
   margin: 6rem auto 6rem auto;
   padding: 3rem 7rem 3rem 7rem;
-  /* margin: auto 6rem; */
-  /* padding: 3rem; */
   background-color: var(--color-secondary-darker);
+}
+
+.form__card--red {
+  width: auto;
+  background-color: var(--color-primary-darker);
+  /* margin: auto;
+  padding: 3rem 2rem 1rem 2rem; */
 }
 
 .form__card h5 {
@@ -1093,11 +1104,6 @@ hr {
   border-radius: 0.5rem;
 }
 
-.cupom {
-  /* margin-left: 4rem; */
-  display: none;
-}
-
 /* MESSAGES */
 
 .messages__container {
@@ -1108,7 +1114,12 @@ hr {
 
 .messages__content {
   font-size: 1.7rem;
-  padding: 2.5rem 7rem 6.5rem 7rem;
+  padding: 2.5rem 7rem 2.5rem 7rem;
+}
+
+.messages__content a {
+  text-decoration: none;
+  color: var(--color-primary-darker);
 }
 
 /* SLIDER */

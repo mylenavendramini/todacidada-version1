@@ -362,7 +362,7 @@ app.post("/cursos-advocaciafeminista", (req, res) => {
       .save()
       .then(() => {
         req.flash("success_msg", "Cupom aceito");
-        res.redirect("/cursos-advocaciafeminista");
+        res.redirect("/cupom-todacidada---10");
       })
       .catch((err) => {
         req.flash(
@@ -400,6 +400,10 @@ app.get("/emails", isAdmin, (req, res) => {
       req.flash("error_msg", "Houve um erro ao listar os e-mails." + err);
       res.redirect("/cursos-advocaciafeminista");
     });
+});
+
+app.get("/cupom-todacidada---10", (req, res) => {
+  res.render("cupom-todacidada---10");
 });
 
 // app.get("/courses", (req, res) => {
