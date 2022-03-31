@@ -377,9 +377,9 @@ app.post("/cursos-advocaciafeminista", (req, res) => {
 app.get("/emails", isAdmin, (req, res) => {
   Cupom.find()
     .sort({ _id: -1 })
-    .then((emails) => {
+    .then((cupoms) => {
       res.render("showemails", {
-        emails: emails.map((emails) => emails.toJSON()),
+        cupoms: cupoms.map((email) => email.toJSON()),
       });
     })
     .catch((err) => {
@@ -389,11 +389,11 @@ app.get("/emails", isAdmin, (req, res) => {
 });
 
 app.get("/emails", isAdmin, (req, res) => {
-  Cupom.find()
+  Email.find()
     .lean()
     // the name that I gave in the variable const Post = new Schema in Post.js
     .sort({ _id: -1 })
-    .then((emails) => {
+    .then((cupoms) => {
       res.render("showemails", { emails: emails });
     })
     .catch((err) => {
