@@ -840,12 +840,12 @@ hr {
 }
 
 .courses__content--active {
-  display: block;
-  /* display: grid;
+  /* display: block; */
+  display: grid;
   grid-column: 1 / span 2;
   grid-template-columns: 3fr 1fr;
   column-gap: 3rem;
-  row-gap: 0rem; */
+  row-gap: 0rem;
 }
 
 .courses__header {
