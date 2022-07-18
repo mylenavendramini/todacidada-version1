@@ -374,6 +374,22 @@ app.post("/cursos-advocaciafeminista", (req, res) => {
   }
 });
 
+app.get("/cursos-cargamental", (req, res) => {
+  res.render("cursos-cargamental");
+});
+
+app.get("/quemsomos", (req, res) => {
+  res.render("quemsomos");
+});
+
+// app.get("/cursos-testepaginainicial", (req, res) => {
+//   res.render("cursos-testepaginainicial");
+// });
+
+// app.get("/cursos-testecursos", (req, res) => {
+//   res.render("cursos-testecursos");
+// });
+
 app.get("/emails", isAdmin, (req, res) => {
   Cupom.find()
     .sort({ _id: -1 })
